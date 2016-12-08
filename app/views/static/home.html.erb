@@ -1,0 +1,90 @@
+<title><%= t "HomePage.title" %></title>
+<script src="https://cdn.rawgit.com/cpettitt/dagre/v0.7.4/dist/dagre.min.js"></script>
+
+     <div class="container">
+        <div class="row">
+     
+            <div class="col-sm-12 text-center bootstrap-welcome">
+    
+              <h2 style="font-size: 60px;line-height: 60px;margin-bottom: 20px;font-weight: 900;"><%= t "HomePage.welcome1" %> <span class="highlight"><%= t "HomePage.welcome2" %></span></h2>
+              <p style="font-weight: 600;margin-bottom:30px"><%= t "HomePage.subtitle1" %> <span class="highlight"><%= t "HomePage.subtitle2" %></span></p>
+              
+              <%= render 'shared/homepage_carousel' %>
+              <h3><%= t "HomePage.text" %></h3>
+              
+              <%= link_to "Would you like to know more?", '/info', class: "btn btn-lg btn-info" %>
+            </div>
+        </div>
+      </div>
+       
+<div class="content-section-a">  
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading"><%= t "HomePage.manual1Title" %> </h2>
+                    <p class="lead">1. <%= t "HomePage.manual1text1" %><br>
+                                    2. <%= t "HomePage.manual1text2" %><br>
+                                    3. <%= t "HomePage.manual1text3" %><br>
+                                    4. <%= t "HomePage.manual1text4" %></p>
+             </div>
+             <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <%= image_tag 'homecarousel/onepic.png', :class => "img-responsive"  %>
+             </div>
+          </div>
+    </div>
+</div>
+        
+<div class="content-section-b">   
+    <div class="container">
+        <div class="row">      
+            <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading"><%= t "HomePage.manual2Title" %></h2>
+                    <p class="lead"><%= t "HomePage.manual2text" %></p>
+            </div>
+            <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                    <%= image_tag 'homecarousel/onepic.png', :class => "img-responsive"  %>
+            </div>
+        </div>
+     </div> 
+</div>
+
+<div class="content-section-a">
+   <div class="container">
+        <div class="row">         
+            <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading"><%= t "HomePage.manual3Title" %></h2>
+                    <p class="lead"><%= t "HomePage.manual3text" %></p>
+            </div>
+            <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <%= image_tag 'homecarousel/onepic.png', :class => "img-responsive"  %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">  
+        <div class="col-lg-5 col-lg-offset-1">
+            <h3><%= t "HomePage.connect" %></h3>
+        </div>
+        <div class="col-lg-5">
+            <ul class="list-inline">
+            <li>
+                <a href="#" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+            </li>
+            <li>
+                <a href="#" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+            </li>
+            <li>
+            <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+</div>

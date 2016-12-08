@@ -1,0 +1,80 @@
+<title><%= t "CompaniesPage.title" %></title>
+
+<div class="container">
+        
+        <div class="row">  
+        <div class="col-md-3">
+                  
+        </div>
+            <div class="col-md-6">
+                
+    		    <% if !params[:x].nil?  %>
+    		        <h3>New Search:</h3>
+    		        <% else %>
+    		        <h3><%= t "SearchPage.text" %></h3>
+    		    <% end %>
+    		    <%# params %>
+            </div>
+        <div class="col-md-3">
+                
+            </div>
+        </div>
+        
+        <div class="row">
+        <div class="col-md-3">
+                
+        </div>  
+          <div class="col-md-6">
+              <%= link_to "Clear search field", search_companies_path  %>
+            <form class="input-group">
+                <div class="input-group-btn search-panel">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    	<span id="search_concept"><%= t "SearchPage.filterbutton" %></span> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="#ime">Ime</a></li>
+                      <li><a href="#prezime">Prezime</a></li>
+                      <li><a href="#jmbg">JMBG</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#ime_firme">Ime firme</a></li>
+                      <li><a href="#MB">MB</a></li>
+                      <li><a href="#PIB">PIB</a></li>
+                    </ul>
+                </div>
+                
+                <input type="hidden" name="search_param" value="blank" id="search_param"> 
+                <input type="text" class="form-control" name="x" placeholder="Search term...">
+                
+                <span class="input-group-btn">
+                    <%# name="Vlada" value="Proba" - ovo ako stavim u red ispod bice poslato %>
+                    
+                    <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span> <%= t "SearchPage.searchbutton" %></button>
+                </span>
+            
+            </form>
+            <p> <ul style="list-style-type:disc"> Napomena:
+                    <li>Mora biti odabran <i> Filter; </i></li>
+                    <li>Imena fizičkih lica se pretražuju u ćirilici, uzimajući u obzir velika i mala slova; <br> <i> primer: Владимир Буквић </i></li>
+                    <li>Imena pravnih lica se pretražuju u latinici, NE uzimajući u obzir velika i mala slova; <i> primer: TELEKOM </i> </li>
+                </ul>
+            </p>
+                
+        </div>
+        <div class="col-md-3">
+                
+        </div>  
+        </div>
+        
+        <div class="row">   
+        <div class="col-md-10 col-xs-offset-1">
+            
+                <% unless @companies.nil? || @companies.empty? %>
+                    <%= render 'results_table' %>
+                <% end %>
+                
+            
+            </div>
+        </div>
+	
+	</div>
+</div>

@@ -1,0 +1,105 @@
+
+h2 {
+    font-size: 50px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    line-height: 50px;
+}
+.highlight {
+    /*color: #2ac5ed;*/
+    /* color: #DFD5DD;*/
+    color: #612E55;
+    
+}
+#content {
+    padding: 70px 0;
+}
+#content .features-list {
+    padding-top: 35px;
+}
+.features-list .feature-block {
+    margin-bottom: 18px;
+}
+.features-list .feature-block .ico {
+    font-size: 37px;
+    line-height: 70px;
+    width:70px;
+    height: 70px;
+    background: #5accff;
+    display: inline-block;
+    border-radius: 50%;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+}
+.features-list .feature-block.bottom-line .ico {
+    width: auto;
+    height: auto;
+	background: transparent;
+	color: #5accff;
+	text-align: center;
+	font-size: 41px;
+	vertical-align: top;
+	margin-top: -10px;
+}
+.features-list .feature-block.bottom-line .fa-github {
+	font-size: 50px;
+}
+.features-list .feature-block.bottom-line .fa-dashboard {
+	font-size: 45px;
+	margin-top: -15px;
+}
+.features-list .feature-block.bottom-line .ico {
+	float: left;
+	margin-right: 15px;
+	margin-left: 21px;
+}
+.features-list .feature-block.bottom-line .features-content {
+	padding-right: 15px;
+	display: table;
+}
+.features-list .feature-block.bottom-line .features-content .name {
+	margin-bottom: 5px;
+}
+.features-list .feature-block.bottom-line .features-content .subname {
+	font-size: 16px;
+	margin-bottom: 12px;
+}
+.features-list .feature-block .name {
+    font-size: 20px;
+    line-height: 1.25em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.features-list .feature-block .text {
+    font-size: 12px;
+    line-height: normal;
+    margin-bottom: 15px;
+}
+
+.iconimg {
+    opacity: 0.4;
+    margin-bottom:10px;
+    margin-top:30px;
+}
+
+.iconimg:hover {
+    opacity: 0.8;
+}     
+.bootstrap-welcome
+{
+    margin-bottom:50px;
+}
+div.text {
+    height: 50px;
+}
+.know_more {
+    margin-top:50px;
+    font-size: 20px;
+}
+.moj_info_item {
+    background: rgba(0, 0, 0, 0.04);
+    padding: 10px 0 5px 0;
+    border-color: #e0e0e0; 
+    color: #666;
+    border: 1px solid #e0e0e0;
+}

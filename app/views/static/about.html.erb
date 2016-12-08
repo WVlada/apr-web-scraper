@@ -1,0 +1,192 @@
+
+
+<title><%= t "AboutPage.title" %></title>
+<div class="container">
+<div class="row">   
+          
+
+        <div class="col-md-12 text-center bootstrap-welcome" style="margin-bottom: 30px">
+          
+          <h2 style="font-size: 60px;line-height: 60px;margin-bottom: 20px;font-weight: 900;"><%= t "AboutPage.h2" %> <span class="highlight"><%= t "AboutPage.h2highlight" %></span></h2>
+          <p style="font-weight: 600;margin-bottom:30px"><%= t "AboutPage.h2text" %><span class="highlight"></span></p>
+          
+        </div>
+ 
+ <div class="row">          
+       
+       <div class="col-md-2 text-center bootstrap-welcome" style="font-weight: 900; font-size: 16px">
+            <table style="width:100%">
+                  <tr>
+                    <th>Globalni pokazatelji</th>
+                  </tr>
+                  <tr align="left" style="font-weight: 400; font-size: 12px"> 
+                      <td>
+                        Ukupno kompanija: <%= @brojkompanija %>
+                      </td>
+                  </tr>
+                  <tr align="left" style="font-weight: 400; font-size: 12px"> 
+                      <td>
+                        Ukupno sektora: <%= @brojsektora %>
+                      </td>
+                  </tr>
+                  <tr align="left" style="font-weight: 400; font-size: 12px"> 
+                      <td>
+                        Ukupno lica: <%= @brojfizickihlica %>
+                      </td>
+                  </tr>
+                  <tr align="left" style="font-weight: 400; font-size: 12px"> 
+                      <td>
+                        % klasterizacije privrede: 55
+                      </td>
+                  </tr>
+                  <tr align="left" style="font-weight: 400; font-size: 12px"> 
+                      <td>
+                        Tri najgusca sektora:
+                      </td>
+                  </tr>
+                  <tr align="left" style="font-weight: 400; font-size: 12px"> 
+                      <td>
+                        - 1.****, koeficijent: 75
+                      </td>
+                  </tr>
+                  <tr align="left" style="font-weight: 400; font-size: 12px"> 
+                      <td>
+                        - 2.****, koeficijent: 65
+                      </td>
+                  </tr>
+                  <tr align="left" style="font-weight: 400; font-size: 12px"> 
+                      <td>
+                        - 3.****, koeficijent: 45
+                      </td>
+                  </tr>
+           </table>
+       </div>
+         
+         <div class="col-md-6 text-center bootstrap-welcome" style="font-weight: 800; font-size: 14px">
+           <table style="width:100%">
+                  <tr>
+                    <th>Tipovi (ukupno: <%= @svitipovikompanija.count %>)</th> 
+                    <th></th>
+                    <th>Struktura:</th>
+                  </tr>
+                  
+                  <% @svitipovikompanija.each do |x| %>
+                    <tr align="left" style="font-weight: 400; font-size: 12px"> 
+                      <td>
+                        <%= x.idnumber %>. <%= x.name %> 
+                      </td>
+                      <td>
+                        <%= x.skraceno %>
+                       </td>
+                       <td align="right">
+                        <%= x.number %>
+                       </td>
+                  <% end %>
+                  <tr>
+                   <td>
+                   </td>
+                   
+                   <td>
+                   </td>
+                   
+                   <td style="font-weight: 800; font-size: 14px">
+                   &#8721; <%= @brojkompanija %>
+                   </td>
+                  </tr>
+           </table>
+           <br>
+           <table style="width:100%">
+                  <tr>
+                    <th>Persons:</th> 
+                    <th>JMBG/MB</th>
+                    <th>Zastupnik</th>
+                    <th>Ostali</th>
+                    <th>UO</th>
+                    <th>NO</th>
+                    <th>Član</th>
+                    <th>&#8721;</th>
+                  </tr>
+                  
+                 <hr />
+                  <% @fizickalica.each do |x| %>
+                    <tr align="left" style="font-weight: 400; font-size: 12px"> 
+                      <td>
+                        <%= truncate(precisti_ime(x.ime_i_prezime), :length => 18) %> 
+                      </td>
+                      <td>
+                        <%= x.jmbg %>
+                      </td>
+                      <td align="right">
+                        <%= x.broj_pojavljivanja_kao_zastupnik %>
+                      </td>
+                      <td align="right">
+                        <%= x.broj_pojavljivanja_kao_ostali_zastupnik %>
+                      </td>
+                      <td align="right">
+                        <%= x.broj_pojavljivanja_kao_upravni %>
+                      </td>
+                      <td align="right">
+                        <%= x.broj_pojavljivanja_kao_nadzorni %>
+                      </td>
+                      <td align="right">
+                        <%= x.broj_pojavljivanja_kao_clan %>
+                      </td>
+                      <td align="right">
+                        <%= x.ukupno %>
+                      </td>
+                  <% end %>
+                  
+                  <%= paginate @fizickalica %>
+                  
+                  <tr>
+                   <td style="font-weight: 800; font-size: 14px">
+                   &#8721; <%= @brojfizickihlica %>
+                   </td>
+                   <td>
+                   </td>
+                   <td>
+                   </td>
+                   <td>
+                   </td>
+                   <td>
+                   </td>
+                   <td>
+                   </td>
+                   <td>
+                   </td>
+                   <td>
+                   </td>
+                  </tr>
+           </table>
+        </div>
+       
+        <div class="col-md-4 text-center bootstrap-welcome" style="font-weight: 900; font-size: 16px">
+           <table style="width:100%">
+                  <tr>
+                    <th>Sektori (ukupno: <%= @sectors.all.count %>)</th> 
+                    <th>Struktura:</th>
+                  </tr>
+                  
+                  <% @sectors.each do |x| %>
+                    <tr align="left" style="font-weight: 400; font-size: 12px"> 
+                      <td>
+                        <%= truncate(x.naziv, :length => 70) %> 
+                      </td>
+                      
+                      <td align="right">
+                        <%= x.sum %>
+                      </td>
+                  <% end %>
+                  <tr>
+                   <td>
+                   </td>
+                   
+                   <td style="font-weight: 800; font-size: 14px">
+                   &#8721; <%= @brojsektora %>
+                   </td>
+                  </tr>
+           </table>
+       </div>
+  </div>
+</div>
+</div>

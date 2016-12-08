@@ -1,0 +1,140 @@
+.alert-successs
+{
+  @extend .alert-success;
+  margin-left: 2%;
+  margin-right: 70%;
+}
+.alert-error
+{
+  @extend .alert-error;
+  background-color: #FF9A9A;
+  border-color: #FBDFDF;
+  margin-left: 2%;
+  margin-right: 70%;
+}
+
+.user_info 
+{
+  margin-left: 20px;
+}
+.user_info_title
+{
+  font-size: 16px;
+  font-weight: bold;
+}
+.ispod_user_info 
+{
+  margin-left: 20px;
+}
+.container-fluid {
+  margin-right: 20%;
+}
+.vlada {
+  margin-left: 20%;
+}
+
+footer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 10px;
+  border-top: 2px solid #eaeaea;
+  padding-bottom: 5px;
+  background-color: rgba(0, 0, 0, 0.1);
+  }
+
+footer ul-left {
+  float: left;
+  list-style: none;
+  margin-left: 20%;
+}
+
+
+footer ul {
+  float: right;
+  list-style: none;
+  margin-right: 20%;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 10px;
+}
+
+.navbar {
+  border-radius: 5px;
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+ 
+}
+
+input {
+  height: auto !important;
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+/* Donji deo HOMEPAGEa */
+
+.content-section-a {
+    padding: 50px 0;
+    background-color: #f8f8f8;
+}
+
+.content-section-b {
+    padding: 50px 0;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.section-heading {
+    margin-bottom: 30px;
+}
+
+.section-heading-spacer {
+    float: left;
+    width: 200px;
+    border-top: 3px solid #e7e7e7;
+}
+body {
+  margin-bottom: 50px;
+}
+.list-inline {
+  padding: 15px;
+}
+.img-responsive{
+  padding: 15px;
+}

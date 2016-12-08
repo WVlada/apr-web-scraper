@@ -1,0 +1,96 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+sr:
+  HomePage:
+    welcome1: "Добродошли на"
+    welcome2: "webscrAPR"
+    title: "Почетна страница"
+    subtitle1: "Пројекат који пошувава да"
+    subtitle2: "изцрта српску економију."
+    text: "Сврха овог сајта је... још није утврђена... Скролуј доле ѕа информације о начину коришћења сајта"
+    
+    carrousel_title_1: "Претрага привредних субјеката"
+    carrousel_text_1: "Претрага привредних субјеката, по имену, по власнику, по члановима управе, заступницимa...  "
+    carrousel_link_1: "Претрага"
+    carrousel_mali_naslov_1: "Претрага"
+    carrousel_mali_text_1: "Основна претрага привредних субјеката"
+    
+    carrousel_title_2: "Графици креирани од стране корисника"
+    carrousel_text_2: "Покушај прављења графика од стране корисника...  "
+    carrousel_link_2: "Графици"
+    carrousel_mali_naslov_2: "Прављење графика"
+    carrousel_mali_text_2: "Графици по жељи корисника"
+    
+    carrousel_title_3: "Представљање целокупне економије у једној слици"
+    carrousel_text_3: "Покушај представљања целокупне еконономије Србије у једној свеобухватној слици...  "
+    carrousel_link_3: "Економија Србије у једној слици"
+    carrousel_mali_naslov_3: "Економија Србије"
+    carrousel_mali_text_3: "У једној слици"
+    
+    manual1Title: "Претрага и повезана лица"
+    manual1text1: "Критеријум претраге мора бити изабран."
+    manual1text2: "Пратите инструкције дате испод форме."
+    manual1text3: "Након клика појавиће се резултати претраге."
+    manual1text4: "Резултати могу бити даље филтрирани."
+    
+    manual2Title: "Прављење графика по жељи"
+    manual2text: "Направи график по жељеним критеријумима! Одабери критеријум и кликни \"крени!\""
+    
+    manual3Title: "Цела привреда у једној слици"
+    manual3text: "Поглед одозго на целу економија Србије, како ради, како је груписана или разбацана."
+  
+    connect: "Повежи се са девелопером:"
+  
+  AboutPage:
+    title: "О нама"
+    text: "Ово је страница о нама."
+    h2: "Сви подаци"
+    h2highlight: "на једном месту:"
+    h2text: "на овој страници се налазе несортиране табеле целокупне базе података."
+    
+  ContactPage:
+    title: "Контакт страница"
+    text: "Ово је контакт страница."
+  HelpPage:
+    title: "Помоћ"
+    text: "Страница за помоћ."
+  LoginPage:
+    title: "Страница за логин"
+    text: "Ово је страница за логин."
+  InfoPage:
+    title: "Занимљиве информације"
+    text: "Између осталих информација сајт садржи:"
+    
+    ruby: "A dynamic, open source programming language with a focus on simplicity and productivity. It has an elegant syntax that is natural to read and easy to write."
+    rails: "A web application framework written in Ruby under the MIT License. Rails is a model–view–controller (MVC) framework, providing default structures for a database, a web service, and web pages."
+    cloud9: "Cloud9 - Your development environment, in the cloud. Cloud9 combines a powerful online code editor with a full Ubuntu workspace in the cloud. Cloud9 supports more than 40 languages."
+    phantomjs: "PhantomJS is a headless WebKit scriptable with a JavaScript API. It has fast and native support for various web standards: DOM handling, CSS selector, JSON, Canvas, and SVG."
+    siteprism: "A Page Object Model DSL for Capybara. SitePrism gives you a simple, clean and semantic DSL for describing your site using the Page Object Model pattern, for use with Capybara in automated acceptance testing."
+    mechanize: "The Mechanize library is used for automating interaction with websites. Mechanize automatically stores and sends cookies, follows redirects, and can follow links and submit forms. Form fields can be populated and submitted."
+    sqlite: "SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine. SQLite is the most widely deployed database engine in the world."
+    cytoscape: "Cytoscape is an open source software platform for visualizing molecular interaction networks and biological pathways and integrating these networks with annotations, gene expression profiles and other state data."
+    capybara: "Capybara is an integration testing tool for rack based web applications. It simulates how a user would interact with a website."
+    
+  SearchPage:
+    text: "Претрага"
+    searchbutton: "Тражи"
+    filterbutton: "Филтер"

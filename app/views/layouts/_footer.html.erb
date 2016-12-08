@@ -1,0 +1,26 @@
+<footer class="footer navbar-fixed-bottom">
+   <ul-left>
+      <li>
+        Private and non-commercial use only. Built on <a href="http://www.rubyonrails.org//" target="_blank">Ruby on Rails</a>
+     </li>
+   </ul-left>
+  
+    <ul>
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "About", about_path %></li>
+      <li><%= link_to "Contact", contact_path %></li>
+      <li>
+          <%= link_to image_tag("srpska-zastava.jpg", width: "36", heigh: "24", alt: "Srpski", id: "Srpski"), controller: params[:controller], action: params[:action], locale: :sr  %>
+      </li>
+      
+      <li>
+          <%= link_to image_tag("english-flag.jpg", width: "36", heigh: "24", alt: "English", id: "English"), controller: params[:controller], action: params[:action], locale: :en  %>
+      </li>
+      
+      <li>
+          <%= link_to image_tag("espanol-flag.jpg", width: "36", heigh: "24", alt: "Espanol", id: "Espanol"), controller: params[:controller], action: params[:action], locale: :es  %>
+      </li>
+    
+    </ul>
+
+</footer>

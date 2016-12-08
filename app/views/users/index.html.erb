@@ -1,0 +1,31 @@
+<title><%= t "HomePage.title" %></title>
+    
+    <section class = "user_info">
+        <aside>
+        
+            <p>Svi korisnici:</p>
+            
+            <% User.all.each do |x| %>
+                
+                <div class = "col-md-2"> 
+                    <%= gravatar_for x %> 
+                    <p>
+                        <span class="glyphicon glyphicon-user"></span> <%= x.id %>.</br>
+                        Ime: <%= x.name %> </br>
+                        Opis: bbbbb bbbhhhhhvvv
+                    </p>
+                </div>
+         
+             <br style="clear:both" />
+             
+            <% end %>
+       
+        </section>
+        
+        <section class = "ispod_user_info">
+        
+            <p class="lead">Parametri: <%= params %></p>
+        
+        </section>
+    
+    </aside>

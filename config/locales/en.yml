@@ -1,0 +1,101 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  HomePage:
+    welcome1: "Welcome to"
+    welcome2: "webscrAPR"
+    subtitle1: "A project that tries to"
+    subtitle2: "picturise serbian economy."
+    title: "Home page"
+    text: "Purpose of this site is... not yet determined. Scroll down on info on how to use this site"
+    
+    carrousel_title_1: "Database search of legal entities"
+    carrousel_text_1: "Search of legal entities, by name, by owner, members of management, ceo`s...  "
+    carrousel_link_1: "Search"
+    carrousel_mali_naslov_1: "Search"
+    carrousel_mali_text_1: "Basic search of legal entities"
+    
+    carrousel_title_2: "User generated graphs"
+    carrousel_text_2: "Trying to make this custom made graphs work!...  "
+    carrousel_link_2: "Graphs"
+    carrousel_mali_naslov_2: "Graph building"
+    carrousel_mali_text_2: "Custom-made graphs"
+    
+    carrousel_title_3: "Presenting the whole economy in one picture"
+    carrousel_text_3: "Trying to present whole economy of Serbia in one picture...  "
+    carrousel_link_3: "Serbian economy in 1 picture"
+    carrousel_mali_naslov_3: "Serbian economy"
+    carrousel_mali_text_3: "In one picture"
+    
+    manual1Title: "Searching and joint interest"
+    manual1text1: "Search criteria must be selected."
+    manual1text2: "Follow instructions beneath form."
+    manual1text3: "After clicking results are displayed."
+    manual1text4: "Results can be further filtered."
+    
+    manual2Title: "Custom graph builder"
+    manual2text: "Create a custom graph of your choice! Select criteria, and click GO!"
+    
+    manual3Title: "Whole economy in one picture"
+    manual3text: "Get a top view on how Serbian economy works, and how it is grouped/scattered."
+   
+    connect: "Connect to developer:"
+  
+  AboutPage:
+    title: "About page"
+    text: "This is about page."
+    h2: "All stat`s"
+    h2highlight: "at a glance:"
+    h2text: "here is all unsorted data of apps database."
+  ContactPage:
+    title: "Contact page"
+    text: "This is contact page."
+  HelpPage:
+    title: "Help page"
+    text: "This is help page."
+  LoginPage:
+    title: "Login page"
+    text: "This is login page."
+  InfoPage:
+    title: "Info page"
+    text: "Information that this site provides:"
+    ruby: "A dynamic, open source programming language with a focus on simplicity and productivity. It has an elegant syntax that is natural to read and easy to write."
+    rails: "A web application framework written in Ruby under the MIT License. Rails is a model–view–controller (MVC) framework, providing default structures for a database, a web service, and web pages."
+    cloud9: "Cloud9 - Your development environment, in the cloud. Cloud9 combines a powerful online code editor with a full Ubuntu workspace in the cloud. Cloud9 supports more than 40 languages."
+    phantomjs: "PhantomJS is a headless WebKit scriptable with a JavaScript API. It has fast and native support for various web standards: DOM handling, CSS selector, JSON, Canvas, and SVG."
+    siteprism: "A Page Object Model DSL for Capybara. SitePrism gives you a simple, clean and semantic DSL for describing your site using the Page Object Model pattern, for use with Capybara in automated acceptance testing."
+    mechanize: "The Mechanize library is used for automating interaction with websites. Mechanize automatically stores and sends cookies, follows redirects, and can follow links and submit forms. Form fields can be populated and submitted."
+    sqlite: "SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine. SQLite is the most widely deployed database engine in the world."
+    cytoscape: "Cytoscape is an open source software platform for visualizing molecular interaction networks and biological pathways and integrating these networks with annotations, gene expression profiles and other data."
+    capybara: "Capybara is an integration testing tool for rack based web applications. It simulates how a user would interact with a website."
+    
+  CompaniesPage:
+    title: "Basic search engine"
+    
+  SearchPage:
+    text: "Search"
+    searchbutton: "Search"
+    filterbutton: "Filter by"
+  
+  NewUser:
+    subtitle: "Benefits:"
+    text: "Registered users can make more advanced searches and graphs, and make custom relations between companies. This feature can be shared or private. "

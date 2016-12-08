@@ -1,0 +1,43 @@
+<div class="container">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+      
+        <div class="item active">
+          <%= image_tag 'homecarousel/homecarousel1', :class => "carouselimage"  %>
+           <div class="carousel-caption">
+            <h3><%= t "HomePage.carrousel_title_1" %></h3>
+            <p><%= t "HomePage.carrousel_text_1" %><%= link_to t("HomePage.carrousel_link_1"), search_companies_path, class: "btn btn-large btn-default" %></p>
+          </div>
+        </div><!-- End Item -->
+ 
+         <div class="item">
+          <%= image_tag 'homecarousel/homecarousel2', :class => "carouselimage" %>
+           <div class="carousel-caption">
+            <h3><%= t "HomePage.carrousel_title_2" %></h3>
+            <p><%= t "HomePage.carrousel_text_2" %><%= link_to t("HomePage.carrousel_link_2"), companies_path, class: "btn btn-large btn-default" %></p>
+          </div>
+        </div><!-- End Item -->
+        
+        <div class="item">
+          <%= image_tag 'homecarousel/homecarousel3', :class => "carouselimage"  %>
+           <div class="carousel-caption">
+            <h3><%= t "HomePage.carrousel_title_3" %></h3>
+            <p><%= t "HomePage.carrousel_text_3" %><a href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank" class="btn btn-large btn-default"><%= t "HomePage.carrousel_link_3" %></a></p>
+          </div>
+        </div><!-- End Item -->
+        
+                
+      </div><!-- End Carousel Inner -->
+
+
+    	<ul class="nav nav-pills nav-justified">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"><a href="#"><%= t "HomePage.carrousel_mali_naslov_1" %><small><%= t "HomePage.carrousel_mali_text_1" %></small></a></li>
+          <li data-target="#myCarousel" data-slide-to="1"><a href="#"><%= t "HomePage.carrousel_mali_naslov_2" %><small><%= t "HomePage.carrousel_mali_text_2" %></small></a></li>
+          <li data-target="#myCarousel" data-slide-to="2"><a href="#"><%= t "HomePage.carrousel_mali_naslov_3" %><small><%= t "HomePage.carrousel_mali_text_3" %></small></a></li>
+        </ul>
+
+
+    </div><!-- End Carousel -->
+</div>

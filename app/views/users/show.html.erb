@@ -1,0 +1,80 @@
+<title><%= t "HomePage.title" %></title>
+
+<div class="container-fluid">
+<div class="row">   
+
+    <div class = "col-md-2">
+    </div>
+    <div class = "col-md-4">
+        <section class = "user_info">
+        <%= gravatar_for @user %>
+            <p class = "user_info_title"> Control panel for user: </p>
+            <%= @user.name %></br>
+            <%= @user.email %>
+            <p>  </p>
+            </br>
+            <p> Upload database file: </p>
+            <%= form_tag "#{params[:id]}/uploads", :multipart => true do %>
+            <%= file_field_tag 'database', class: "form-control"%>
+            <button type="submit" class="btn btn-default">Upload
+            <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+            </button>
+            
+            <%# submit_tag "Upload" %>
+            <% end %>
+            
+        </section>
+        <p class="lead">Parametri: <%= params %></p>
+    </div>
+ 
+    <% if @user.admin?(params[:id]) %>
+
+    <div class = "col-md-4">
+        <p> Baze koje nisu unete: </p>
+       
+                <% if ima_li_baza_koje_nisu_prosle? %>
+                    <% lista_baza_koje_nisu_prosle.each do |x|  %>
+       
+                        <div class="row">
+                            <div class = "col-md-4">
+                                <%= File.basename("#{x}") %> &nbsp; <span class="label label-danger">Nije uneta!</span>
+                            </div>
+                            <div class = "col-md-2">
+                                <%# link_to "Unesi?", { :controller => "*******", :action => "*******"}, class:"btn btn-success btn-xs", remote: true %>
+                                <%# link_to "Unesi?", "/bla?fajl=#{x}", data: { method: :post, remote: true, params: { proba: x }.to_param }, class:"btn btn-success btn-xs" %>
+                                <%= link_to "Unesi?", "/bla?fajl=#{x}", remote: true, class:"btn btn-success btn-xs" %>
+                                <%# this work with LINK_to but NOT with BUTTON_TO%>
+                            </div>
+                        </div>
+                        </br>
+                    <% end %>
+                <% else %>
+                    <span class="label label-info">Svi uploadovani fajlovi su uneti u bazu</span>
+                <% end %>
+         <div>
+             Osvezi generalne informacije o bazi:
+             <%= link_to "Refresh", "/users/#{params[:id]}/refresh", remote: true, class:"btn btn-success btn-xs" %>
+         </div>
+        
+        <div>
+             napravi csv:
+             <%= link_to "Csv", "/users/#{params[:id]}/csv", remote: true, class:"btn btn-success btn-xs" %>
+         </div>
+         <div>
+             ispravi upis gde nije dobar:
+             <%= link_to "Ipsravka baze", "/users/#{params[:id]}/ispravka", remote: true, class:"btn btn-success btn-xs" %>
+         </div>
+     
+     </div>
+       
+    <div class = "col-md-2">
+        <%= link_to "here", '\file.csv' %>
+        <%# Company.all.each do |x| %>
+        <p> <%# x.MB %> </p>
+        <%# end %>
+    </div>
+
+    <% end %>
+
+</div>
+</div>

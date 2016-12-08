@@ -1,0 +1,20 @@
+<title><%= t "HelpPage.title" %></title>
+
+
+     
+        <div class="col-sm-12 text-center bootstrap-welcome">
+<%= render 'shared/info_carousel' %>
+          <span class="label label-default">Default</span>
+          <span class="label label-primary">Primary</span>
+          <span class="label label-success">Success</span>
+          <span class="label label-info">Info</span>
+          <span class="label label-warning">Warning</span>
+          <span class="label label-danger">Danger</span>
+
+          <h1><%= t "HelpPage.text" %></h1>
+          
+          <p class="lead">Parametri: <%= params %></p>
+          <%= link_to "Sign up now!", '/users/new', class: "btn btn-lg btn-primary" %>
+       
+      
+        </div>

@@ -1,0 +1,169 @@
+<title><%= t "CompaniesPage.title" %></title>
+
+<div class="container">
+    <div class="row">    
+        <div class="col-xs-12">
+            <button type="button" class="btn btn-success" aria-label="Left Align">
+              <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Informacije:
+            </button>
+         </div>
+     
+        <div class="col-xs-5 ceo_box">
+            <div class="company_item company_name">
+                <span class="glyphicon glyphicon-home"></span><br><%= @company.poslovno_ime %>
+            </div>
+            <div class="company_item company_adress">
+                <span class="glyphicon glyphicon-bookmark"></span><br><%= @company.opstina %>, <%= @company.mesto %>, <%= @company.ulica_i_broj %>
+            </div>
+            <div class="company_item company_datum">
+                <span class="glyphicon glyphicon-calendar"></span><br><%= @company.datum_osnivanja %>
+            </div>
+            <div class="company_item company_delatnost">
+                <span class="glyphicon glyphicon-wrench"></span><br><%= @company.naziv_delatnosti %>, <span class="glyphicon glyphicon-menu-hamburger"></span><%= %> <%= @company.sifra_delatnosti %>
+            </div>
+            <div class="company_item company_aktivnost">
+                <span class="glyphicon glyphicon-thumbs-up"></span><br><%= @company.status %>
+            </div>
+            <div class="company_item company_mb">
+                <span class="glyphicon glyphicon-barcode"></span><br><%= @company.MB %>
+            </div>
+            <div class="company_item company_pib">
+                <span class="glyphicon glyphicon-list"></span><br><%= @company.PIB %>
+            </div>
+  
+<!--
+            <div class="company_zastupnici">
+                <span class="glyphicon glyphicon-user"></span> Zastupnici:<br><%# @company.zastupnici %>
+            </div>
+            
+            <div class="company_ostali_zastupnici">
+                <span class="glyphicon glyphicon-user"></span> Ostali zastupnici<br><%# @company.ostali_zastupnici %>
+            </div>
+            <div class="company_nadzorni_odbor">
+                <span class="glyphicon glyphicon-user"></span> Nadzorni odbor:<br><%# @company.nadzorni_odbor %>
+            </div>
+            <div class="company_upravni_odbor">
+                <span class="glyphicon glyphicon-user"></span> Upravni odbor:<br><%# @company.upravni_odbor %>
+            </div>
+            <div class="company_clanovi">
+                <span class="glyphicon glyphicon-user"></span> Upravni odbor:<br><%# @company.clanovi %>
+            </div>
+          </div>
+-->       </div>  
+          
+          <div class="col-xs-6 ceo_box">
+            <div class="company_item company_zastupnici">
+                <span class="glyphicon glyphicon-user"></span> Zastupnici<br>
+                <% unless @company.zastupnici == nil %>
+                    <% @zastupnici = Hash[@company.zastupnici.each_slice(2).to_a] %>
+                    <% @zastupnici.each_with_index do |(key,value), index| %>
+                    <div class="red">
+                        <div class="broj"><%= "#{index + 1}." %></div>
+                        <div class="ime_i_prezime"><%= key.to_s %></div>
+                        <% if logged_in? %>    
+                            <div class="jmbg"> <%= value.to_s  %><br></div> 
+                        <% else %>
+                            <div class="jmbg"> <% m = value.clone %><% m.to_s[7..12] = "xxxxxx" %> <%= m.to_s %><br></div>
+                        <% end %>
+                    </div>
+                    <% end %>
+                 <% end %>
+            </div>
+            
+            <div class="company_item company_ostali_zastupnici">
+                <span class="glyphicon glyphicon-user"></span> Ostali zastupnici<br>
+                <% unless @company.ostali_zastupnici == nil %>
+                    <% @ostali_zastupnici = Hash[@company.ostali_zastupnici.each_slice(2).to_a] %>
+                    <% @ostali_zastupnici.each_with_index do |(key,value), index| %>
+                        <div class="red">
+                        <div class="broj"><%= "#{index + 1}." %></div>
+                        <div class="ime_i_prezime"><%= key.to_s %></div>
+                        <% if logged_in? %>    
+                            <div class="jmbg"> <%= value.to_s  %><br></div> 
+                        <% else %>
+                            <div class="jmbg"> <% m = value.clone %><% m.to_s[7..12] = "xxxxxx" %> <%= m.to_s %><br></div>
+                        <% end %> 
+                    </div> 
+                    <% end %>
+                 <% end %>
+            </div>
+            
+            <div class="company_item company_nadzorni_odbor">
+                <span class="glyphicon glyphicon-user"></span> Nadzorni odbor<br>
+                <% unless @company.nadzorni_odbor == nil %>
+                    <% @nadzorni_odbor = Hash[@company.nadzorni_odbor.each_slice(2).to_a] %>
+                    <% @nadzorni_odbor.each_with_index do |(key,value), index| %>
+                        <div class="red">
+                        <div class="broj"><%= "#{index + 1}." %></div>
+                        <div class="ime_i_prezime"><%= key.to_s %></div>
+                        <% if logged_in? %>    
+                            <div class="jmbg"> <%= value.to_s  %><br></div> 
+                        <% else %>
+                            <div class="jmbg"> <% m = value.clone %><% m.to_s[7..12] = "xxxxxx" %> <%= m.to_s %><br></div>
+                        <% end %>
+                    </div>
+                    <% end %>
+                 <% end %>
+            </div>
+            
+            <div class="company_item company_upravni_odbor">
+                <span class="glyphicon glyphicon-user"></span> Upravni odbor<br>
+                <% unless @company.upravni_odbor == nil %>
+                    <% @upravni_odbor = Hash[@company.upravni_odbor.each_slice(2).to_a] %>
+                    <% @upravni_odbor.each_with_index do |(key,value), index| %>
+                        <div class="red">
+                        <div class="broj"><%= "#{index + 1}." %></div>
+                        <div class="ime_i_prezime"><%= key.to_s %></div>
+                        <% if logged_in? %>    
+                            <div class="jmbg"> <%= value.to_s  %><br></div> 
+                        <% else %>
+                            <div class="jmbg"> <% m = value.clone %><% m.to_s[7..12] = "xxxxxx" %> <%= m.to_s %><br></div>
+                        <% end %>
+                    </div> 
+                    <% end %>
+                 <% end %>
+            </div>
+            
+            <div class="company_item company_clanovi">
+                <span class="glyphicon glyphicon-user"></span> Članovi<br>
+                <% unless @company.clanovi == nil %>
+                    <% @clanovi = Hash[@company.clanovi.each_slice(2).to_a] %>
+                    <% @clanovi.each_with_index do |(key,value), index| %>
+                        <div class="red">
+                        <div class="broj"><%= "#{index + 1}." %></div>
+                        <div class="ime_i_prezime"><%= key.to_s %></div>
+                        <% if logged_in? %>    
+                            <div class="jmbg"> <%= value.to_s  %><br></div> 
+                        <% else %>
+                            <div class="jmbg"> <% m = value.clone %><% m.to_s[7..12] = "xxxxxx" %> <%= m.to_s %><br></div>
+                        <% end %>
+                    </div>
+                    <% end %>
+                <% end %>
+            </div>     
+
+        </div>
+    
+ 	</div>
+ 	
+    <div class="row">
+    
+    <div class="col-xs-12">
+      <% unless @company.nil? %>
+          <%= render 'povezana_results_table' %>
+          <% else %>
+          Nema povezanih firmi
+      <% end %>
+      
+          <form id="za_back">
+	        <button form="za_back" formaction="search" type="submit" class="btn btn-info" aria-label="Left Align">
+              <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back to search?
+            </button>
+          </form>
+	</div>
+	    
+	        <%= render 'shared/graph'  %>
+	   
+    </div>
+
+</div>

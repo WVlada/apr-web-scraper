@@ -1,0 +1,51 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+es:
+  HomePage:
+    welcome: "Bienvenido"
+    title: "Página de inicio"
+  AboutPage:
+    title: "Acerca de la página"
+    text: "Esto se trata de la página."
+  ContactPage:
+    title: "Pagina de contacto"
+    text: "Esta es la página de contactos."
+  HelpPage:
+    title: "Página de ayuda ES"
+    text: "Esta es la página de ayuda ES."
+  LoginPage:
+    title: "Página de registro ES"
+    text: "Esta es la página de inicio de sesión ES."
+  InfoPage:
+    InfoPage:
+    title: "las páginas de información"
+    text: "La información que ofrece este sitio:"
+    ruby: "Una, de código abierto lenguaje de programación dinámico con un enfoque en la simplicidad y la productividad. Tiene una sintaxis elegante que es natural para leer y fácil de escribir."
+    rails: "Un marco de aplicación web escrita en Ruby bajo la licencia MIT. Rails es un marco modelo-vista-controlador (MVC), proporcionando estructuras predeterminadas de una base de datos, un servicio web y páginas web."
+    cloud9: "Cloud9 - Su entorno de desarrollo, en la nube. Cloud9 combina un potente editor de código en línea con un espacio de trabajo completo de Ubuntu en la nube. Cloud9 soporta más de 40 idiomas."
+    phantomjs: "PhantomJS es un WebKit sin cabeza de secuencias de comandos con un API de JavaScript. Tiene soporte rápido y de origen por varios estándares web: manipulación DOM, selector CSS, JSON, lona, Un DSL Página del modelo de objetos de carpincho. SitePrism le da una DSL sencillo, limpio y semántica para describir su sitio utilizando el patrón Modelo objeto de página, para su uso con Carpincho en las pruebas de aceptación automatizada."
+    siteprism: "Un DSL Página del modelo de objetos de carpincho. SitePrism le da una DSL sencillo, limpio y semántica para describir su sitio utilizando el patrón de Página Modelo de objetos, para su uso con Carpincho en las pruebas de aceptación automática."
+    mechanize: "La biblioteca Mechanize se utiliza para la automatización de la interacción con los sitios web. Mecanizar automáticamente almacena y envía las cookies, sigue redirecciones, y puede seguir enlaces y enviar formularios. Los campos del formulario se pueden rellenar y sometidos."
+    sqlite: "SQLite es una biblioteca de software que implementa una, sin servidor, sin configuración, motor de base de datos SQL transaccional autónomo. SQLite es el motor de base de datos de mayor despliegue en el mundo."
+    cytoscape: "Cytoscape es una plataforma de software de código abierto para la visualización de las redes de interacción molecular y vías biológicas y la integración de estas redes con anotaciones, perfiles de expresión génica y otros datos de estado."
+    capybara: "Capibara es una herramienta de pruebas de integración para aplicaciones web basadas en rack. Simula un usuario interactuar con un sitio web."
+    
