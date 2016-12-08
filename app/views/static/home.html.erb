@@ -10,10 +10,12 @@
               <p style="font-weight: 600;margin-bottom:30px"><%= t "HomePage.subtitle1" %> <span class="highlight"><%= t "HomePage.subtitle2" %></span></p>
               
               <%= render 'shared/homepage_carousel' %>
-              <h3><%= t "HomePage.text" %></h3>
+              <h3 align="left"><%= simple_format t "HomePage.texttitle" %></h3>
+              <div align="left"> <%= simple_format t "HomePage.text" %> </div>
               
               <%= link_to "Would you like to know more?", '/info', class: "btn btn-lg btn-info" %>
             </div>
+        <div class="passtest">   </div>
         </div>
       </div>
        

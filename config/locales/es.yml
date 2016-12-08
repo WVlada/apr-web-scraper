@@ -21,11 +21,34 @@
 
 es:
   HomePage:
-    welcome: "Bienvenido"
+    welcome1: "Bienvenido"
     title: "Página de inicio"
+    texttitle: <b>Cómo se hizo</b>
+    text: |
+       <b> 1. Sitio web de NBS. </b>
+        - Ya que el sitio web de la APR no puede ser raspado sin cabeza, el primer paso fue raspar todos los posibles números de identificación fiscal en Serbia en el sitio web del Banco Nacional de Serbia.
+        - Cada golpe positivo, que devuelve el número de cuenta corriente, devuelve un número de registro uniforme (MB) y un número de identificación fiscal (PIB) como una combinación.
+        - Esta información se guarda en la tabla sql.
+        - Tecnologías utilizadas - Mecanizar. Tomó aprox. 1,5 meses para probar varios números milion. Los datos recolectados fueron alrededor de 170.000 de números de MB válidos.
+        - El sitio web de NBS no tiene una buena política de prohibición para este tipo de raspado.
+        <b> 2. El siguiente es el raspado del sitio web de APR. </b>
+        - APR utiliza JS para los campos de búsqueda, por lo que Mechanize wouldnt hacer. Capybara + phantomjs se utilizaron para el raspado sin cabeza.
+        - Cada conjunto de páginas se definió con SitePrism. Un conjunto de páginas coincide con el tipo de empresa.
+        - APR webiste tiene mucho mejor protección. Además de JS, prohíbe temporalmente la dirección de las apps, por aprox. 24 horas.
+        - En cada vuelta, permite que solamente cerca de 100 páginas sean raspadas de una dirección. Esta parte tomó el más largo. Se utilizaron tres aplicaciones, locales y de nube. Aprox. 8 meses.
+        <b> 3. Limpieza de datos sin procesar. </b>
+        - Los datos debían ser extraídos utilizando expresiones regulares, y guardados en una nueva base de datos mysql.
+        - Era más fácil subir el archivo sin procesar a la aplicación, y después agregar cada archivo 1 por 1.
+        <b> 4. Presentación. </b>
+        - De nuevo los datos tuvieron que ser reorganizados para que coincidieran con los criterios del software de visualización de la red.
+        - Cytoscape se utiliza para imágenes de red completas.
+        - Cytoscape.js se utiliza en la aplicación para la representación gráfica de entidades buscadas únicas y sus entidades conectadas.
   AboutPage:
-    title: "Acerca de la página"
+    title: "Acerca de la página Bienvenido"
     text: "Esto se trata de la página."
+    h2: "Esto se trata de la página."
+    h2highlight: "Esto se trata de la página."
+    h2text: "Esto se trata de la página."
   ContactPage:
     title: "Pagina de contacto"
     text: "Esta es la página de contactos."
