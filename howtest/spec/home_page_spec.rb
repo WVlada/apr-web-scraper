@@ -11,9 +11,9 @@ RSpec.feature 'Static pages and basic links' do
     expect(HomePage.given.text).to include("Welcome")
   end
 
-  scenario 'Element named "div" with class "row" is present on HomePage' do
+  scenario 'Element named "div" with class "passtest" is present on HomePage' do
     #HomePage.open
-    HomePage.given.find_div_row
+    HomePage.given.find_div_passtest
   end
   
   scenario 'English flag is present on HomePage' do

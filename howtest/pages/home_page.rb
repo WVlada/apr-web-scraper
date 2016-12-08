@@ -5,7 +5,7 @@ class HomePage < WebPage
   validate :url, pattern: %r{\A(?:.*?:\/\/)?[^\/]*\/?\z}
   url '/'
   
- add_locator :div, xpath: "//div[@class='row']"
+ add_locator :passtest, xpath: "//div[@class='passtest']"
  add_locator :english_flag, xpath: "//img[@id='English']"
  
  add_locator :about, "a[href*=\"/about\"]"
@@ -15,8 +15,8 @@ class HomePage < WebPage
  
  include HomeMenu
  
- def find_div_row
-    find(locator(:div)) 
+ def find_div_passtest
+    find(locator(:passtest)) 
  end
  
  def flag_find
