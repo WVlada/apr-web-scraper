@@ -1,5 +1,5 @@
-document.addEventListener("DOMContentLoaded", function(event) {
-
+//document.addEventListener("DOMContentLoaded", function(event) {
+$(document).on('ready companies.show:change', function() {
 var pocetni = gon.companies;
 var povezani = gon.povezani;
 var nodes = [];
@@ -19,8 +19,7 @@ var cy = cytoscape({
       container: document.getElementById('cy'),
       style: [{ selector: 'node', style: { 'background-color': 'green', 'label': 'data(id)', 'border-style': 'double' } }]
 });
-$(document).ready(cy)
-$(document).on('page:load', cy)
+
 //var novi = cytoscape({
 //    container: document.getElementById('cy')
 //});

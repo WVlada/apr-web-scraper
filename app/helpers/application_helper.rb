@@ -1,5 +1,9 @@
 module ApplicationHelper
-    Words = ["NA", "VELIKO", "MALO","TURIZAM","UGOSTITELJSTVO","REKREATIVNE","PRIVREDNO","DRUŠTVO","PROMET","PROIZVODNJU","POSLOVNE","SPOLJNU","UNUTRAŠNJU","TRGOVINU","I", "KOMPANIJA","ZASTUPANJE","POSLOVE", "DEONIČKO", "АКCIONARSKO", "AKCIONARSKO ", "PREDUZEĆE", "ZA", "KNJIGOVODSTVENE", "USLUGE", "PROIZVODNO", "TRGOVINSKO", "USLUŽNO", "DRUŠTVO", "SA", "OGRANIČENOM", "ODGOVORNOŠĆU", "Preduzeće", "za", "reviziju", "finansijskih", "izveštaja"  ]
+    Words = ["NA", "VELIKO", "MALO","TURIZAM","UGOSTITELJSTVO","REKREATIVNE","PRIVREDNO","DRUŠTVO","PROMET",
+             "PROIZVODNJU","POSLOVNE","SPOLJNU","UNUTRAŠNJU","TRGOVINU","I", "KOMPANIJA","ZASTUPANJE","POSLOVE", 
+             "DEONIČKO", "АКCIONARSKO", "AKCIONARSKO ", "PREDUZEĆE", "ZA", "KNJIGOVODSTVENE", "USLUGE", "PROIZVODNO", 
+             "TRGOVINSKO", "USLUŽNO", "DRUŠTVO", "SA", "OGRANIČENOM", "ODGOVORNOŠĆU", "Preduzeće", "za", "reviziju", 
+             "finansijskih", "izveštaja", "PREDUZEĆE", "ZA", "PROIZVODNJU", "PROMET" ,"I", "POSLOVNE USLUGE", "ŠPEDITERSKE", " ,", ",", ", ", ","  ]
     
     def precisti_ime(x)
     

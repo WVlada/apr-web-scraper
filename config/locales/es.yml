@@ -51,7 +51,7 @@ es:
     h2text: "Esto se trata de la página."
   ContactPage:
     title: "Pagina de contacto"
-    text: "Esta es la página de contactos."
+    text: "Contacto en los siguientes enlaces:"
   HelpPage:
     title: "Página de ayuda ES"
     text: "Esta es la página de ayuda ES."
@@ -71,4 +71,12 @@ es:
     sqlite: "SQLite es una biblioteca de software que implementa una, sin servidor, sin configuración, motor de base de datos SQL transaccional autónomo. SQLite es el motor de base de datos de mayor despliegue en el mundo."
     cytoscape: "Cytoscape es una plataforma de software de código abierto para la visualización de las redes de interacción molecular y vías biológicas y la integración de estas redes con anotaciones, perfiles de expresión génica y otros datos de estado."
     capybara: "Capibara es una herramienta de pruebas de integración para aplicaciones web basadas en rack. Simula un usuario interactuar con un sitio web."
+  
+  SearchPage:
+    text: "Buscar"
+    searchbutton: "Buscar"
+    filterbutton: "Filtrado por"
+    results: "Resultados de la búsqueda:"
     
+  CompaniesPage:
+    title: "Buscador básico"

@@ -86,7 +86,7 @@ en:
     h2text: "here is all unsorted data of apps database."
   ContactPage:
     title: "Contact page"
-    text: "This is contact page."
+    text: "Contact on following links:"
   HelpPage:
     title: "Help page"
     text: "This is help page."
@@ -113,6 +113,7 @@ en:
     text: "Search"
     searchbutton: "Search"
     filterbutton: "Filter by"
+    results: "Search results:"
   
   NewUser:
     subtitle: "Benefits:"

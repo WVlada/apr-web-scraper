@@ -4,11 +4,23 @@ class CsvController < ApplicationController
   
   def index
       
-      File.delete("./public/file.csv") if File.exist?("./public/file.csv")
-      
-      sve = Company.take(20000)
+      sve = Company.take(20005)
       m = 0
+      
+      #File.delete("./public/file.csv") if File.exist?("./public/file.csv")
+      # append fora
+      lista = []
+      CSV.foreach('./public/file.csv') do |row|
+          lista << row[0]
+      end
+      
       sve.each do |kompanija|
+                
+                # append
+                if lista.include?(kompanija.MB.to_s)
+                  puts "preskacem"
+                  next
+                else
                 
                 prvaMB = []
                 prvaMB << kompanija.MB
@@ -59,6 +71,7 @@ class CsvController < ApplicationController
                               end
                             end
                 end
+              end#ovo je end za append if
         
         CSV.open("public/file.csv", "a+") do |csv|
                                           prvaMB.each_with_index do |mb, index| 

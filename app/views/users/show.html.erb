@@ -1,4 +1,5 @@
 <title><%= t "HomePage.title" %></title>
+<% if @user.admin?(@user.id) %>
 
 <div class="container-fluid">
 <div class="row">   
@@ -52,17 +53,20 @@
                     <span class="label label-info">Svi uploadovani fajlovi su uneti u bazu</span>
                 <% end %>
          <div>
+             ********
+         </div>
+         <div>
              Osvezi generalne informacije o bazi:
              <%= link_to "Refresh", "/users/#{params[:id]}/refresh", remote: true, class:"btn btn-success btn-xs" %>
          </div>
         
         <div>
-             napravi csv:
+             Napravi csv:
              <%= link_to "Csv", "/users/#{params[:id]}/csv", remote: true, class:"btn btn-success btn-xs" %>
          </div>
          <div>
-             ispravi upis gde nije dobar:
-             <%= link_to "Ipsravka baze", "/users/#{params[:id]}/ispravka", remote: true, class:"btn btn-success btn-xs" %>
+             Ispravi upis gde nije dobar:
+             <%= link_to "Ispravka baze", "/users/#{params[:id]}/ispravka", remote: true, class:"btn btn-success btn-xs" %>
          </div>
      
      </div>
@@ -78,3 +82,17 @@
 
 </div>
 </div>
+
+<% else %>
+<div class="container-fluid">
+<div class="row">   
+
+    <div class = "col-md-2">
+    </div>
+    <div class = "col-md-8">
+        <h2> stranica rezervisana za admine</h2>
+    </div>
+    <div class = "col-md-2">
+    </div>
+
+<% end %>

@@ -3,7 +3,7 @@
     <section class = "user_info">
         <aside>
         
-            <p>Svi korisnici:</p>
+            <h3>Svi korisnici:</h3>
             
             <% User.all.each do |x| %>
                 
@@ -12,7 +12,11 @@
                     <p>
                         <span class="glyphicon glyphicon-user"></span> <%= x.id %>.</br>
                         Ime: <%= x.name %> </br>
-                        Opis: bbbbb bbbhhhhhvvv
+                        <% unless x.admin?(x.id) %>
+                            Korisnik
+                            <% else%>
+                            Administrator <%# x.admin?(x.id) %>
+                        <% end%>
                     </p>
                 </div>
          
@@ -24,7 +28,7 @@
         
         <section class = "ispod_user_info">
         
-            <p class="lead">Parametri: <%= params %></p>
+            
         
         </section>
     

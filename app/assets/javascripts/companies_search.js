@@ -6,7 +6,7 @@ var ready = function(e){
 		$('.search-panel span#search_concept').text(concept);
 		$('.input-group #search_param').val(param);
 	});
-};
+};;
 
-$(document).ready(ready);
-$(document).on('page:load', ready);
+$(document).ready(ready)
+$(document).on('page:load', ready)

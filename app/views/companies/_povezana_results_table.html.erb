@@ -22,7 +22,8 @@
                 <% @povezani.each_with_index do |x,i| %>
                     <tr>
                         <td><%= i+1 %></td>
-                        <td><%= link_to x.MB.to_s, company_path(x.id) %></td>
+                        <%# Turbolinks FIX %>
+                        <td><%= link_to x.MB.to_s, company_path(x.id), data: { no_turbolink: true } %></td>
                         <td><%= x.PIB %></td>
                         <td><%= x.poslovno_ime %></td>
                     <tr>
