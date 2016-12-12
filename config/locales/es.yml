@@ -80,3 +80,11 @@ es:
     
   CompaniesPage:
     title: "Buscador básico"
+    
+  UsergraphPage:
+    title: "Gráficos generados por el usuario."
+    text:  "Pagina en construcción."
+     
+  OnepicPage:
+    title: "Economía en un cuadro."
+    text:  "Haga clic en la imagen para ampliarla."

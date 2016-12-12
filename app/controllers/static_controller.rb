@@ -43,4 +43,12 @@ class StaticController < ApplicationController
    
   end
   
+  def user_graphs
+   
+  end
+  
+  def one_pic
+   
+  end
+  
 end

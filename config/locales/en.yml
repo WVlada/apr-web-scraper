@@ -118,3 +118,11 @@ en:
   NewUser:
     subtitle: "Benefits:"
     text: "Registered users can make more advanced searches and graphs, and make custom relations between companies. This feature can be shared or private. "
+    
+  UsergraphPage:
+    title: "User generated graphs."
+    text:  "Page under construction."
+    
+  OnepicPage:
+    title: "Economy in a picture."
+    text:  "Click on image to view full size."

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   match '/about',    to: 'static#about',    via: 'get'
   match '/contact',  to: 'static#contact',  via: 'get'
   match '/info',  to: 'static#info',  via: 'get'
+  match '/user_graphs',  to: 'static#user_graphs',  via: 'get'
+  match '/one_pic',  to: 'static#one_pic',  via: 'get'
   
   match 'en',     to: 'static#english',  via: 'get'
   match 'sr',     to: 'static#srpski',  via: 'get'

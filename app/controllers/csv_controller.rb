@@ -68,16 +68,17 @@ class CsvController < ApplicationController
                                             ime.each do |x|
                                                   prvaMB.push(x.MB) unless prvaMB.include?(x.MB)
                                             end unless ime == nil
-                              end
-                            end
-                end
-              end#ovo je end za append if
+                                        end#za jmbgove
+                            end# za unless
+                end#za prvaMB.each
+                end#ovo je end za append if
         
         CSV.open("public/file.csv", "a+") do |csv|
                                           prvaMB.each_with_index do |mb, index| 
-                                                                csv << ["#{prvaMB[0]}", "#{mb}", "#{m}" ]
+                                                                csv << ["#{prvaMB[0]}", "#{mb}" ]
                                                                 end
-                                          end
+        end
+        
         puts "uneto je " + "#{m}"
         m = m + 1
         

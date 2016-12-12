@@ -1,0 +1,15 @@
+.onepic {
+  filter: gray; /* IE6-9 */
+  -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+    -webkit-box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.35);
+    -moz-box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.35);
+    box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.35);
+    margin-bottom:20px;
+    margin-top:20px;
+}
+
+.onepic:hover {
+  filter: none; /* IE6-9 */
+  -webkit-filter: grayscale(0); /* Google Chrome, Safari 6+ & Opera 15+ */
+ 
+}
