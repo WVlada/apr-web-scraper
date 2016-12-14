@@ -3,9 +3,10 @@ class RefreshController < ApplicationController
   
   def index
     
-    populate_info_base_company_types
-    populate_info_base_sectors
-    populate_info_base_people
+    #populate_info_base_company_types
+    #populate_info_base_sectors
+    #populate_info_base_people
+    populate_sum_column
 
     redirect_to :back
   end
@@ -116,17 +117,25 @@ class RefreshController < ApplicationController
       
       ################### KAO CLANOVI
       @peopleClanovi = []
-      Company.all.each do |row|
-        row.clanovi.to_a.each do |x|
-          @peopleClanovi << x
-        end
+      
+      kompclanovi = Company.pluck(:clanovi)
+      #Company.all.each do |row|
+      kompclanovi.each do |x|
+          x.each do |y|
+      #  row.clanovi.to_a.each do |x|
+      # @peopleClanovi << x
+        @peopleClanovi << y unless y == nil
+          end
       end
       # moram reverse, da bi mi kljucevi vili JMBG-ovi, a ne imena
       # "Жарко Томовић"=>"2001961270050"
       @peopleClanovi.reverse!      
       # "2001961270050"=>"Жарко Томовић" - key -> value
-      jmbgHash = Hash[*@peopleClanovi] # izgleda ovako: {"2212963782815"=>"Горан Николић", "0102967745011"=>"Јадранка Томић", "2711960788444"=>"Нада Дамјановић",
-                                       # ovde sam ostalo bez duplikata!!!!!
+      
+      # kada se ubacuje preko 10.000 on daje: Stack to deep ERROR
+      #jmbgHash = Hash[*@peopleClanovi]
+      #RESENJE
+      jmbgHash = Hash[@peopleClanovi.each_slice(2).to_a]
       
       timesHash = Hash.new(0) # u @peopleClanovi su mi sacuvani duplikati, pa njih koristim
       @peopleClanovi.each{|key| timesHash[key] += 1} # timesHash sad izgleda ovako: {"2212963782815"=>2, "Горан Николић"=>2, "0102967745011"=>2, "Јадранка Томић"=>2
@@ -137,15 +146,19 @@ class RefreshController < ApplicationController
   
       ################### KAO ZASTUPNICI
       @peopleZastupnici = []
-      Company.all.each do |row|
-         row.zastupnici.to_a.each do |x|
-          @peopleZastupnici << x
-         end
+      #Company.all.each do |row|
+      kompzastupnici = Company.pluck(:zastupnici)
+      kompzastupnici.each do |x|
+          x.each do |y|
+      #   row.zastupnici.to_a.each do |x|
+          @peopleZastupnici << y unless y == nil
       end
+      end
+      #end
       # takodje moram reverse
       @peopleZastupnici.reverse!
       
-      jmbgHashZ = Hash[*@peopleZastupnici]
+      jmbgHashZ = Hash[@peopleZastupnici.each_slice(2).to_a]
       timesHashZ = Hash.new(0)
       @peopleZastupnici.each{|key| timesHashZ[key] += 1}
       
@@ -161,16 +174,19 @@ class RefreshController < ApplicationController
          end
       end
   ################### KAO OSTALI ZASTUPNICI
+      kompostali = Company.pluck(:ostali_zastupnici)
       @peopleOstaliZastupnici = []
-      Company.all.each do |row|
-         row.ostali_zastupnici.to_a.each do |x|
-          @peopleOstaliZastupnici << x
+      kompostali.each do |x|
+          x.each do |y|
+      #Company.all.each do |row|
+    #     row.ostali_zastupnici.to_a.each do |x|
+          @peopleOstaliZastupnici << y unless y == nil
          end
       end
       # takodje moram reverse
       @peopleOstaliZastupnici.reverse!
       
-      jmbgHashOZ = Hash[*@peopleOstaliZastupnici]
+      jmbgHashOZ = Hash[@peopleOstaliZastupnici.each_slice(2).to_a]
       timesHashOZ = Hash.new(0)
       @peopleOstaliZastupnici.each{|key| timesHashOZ[key] += 1}
       
@@ -187,15 +203,18 @@ class RefreshController < ApplicationController
       end
       ################### KAO UO
       @peopleUO = []
-      Company.all.each do |row|
-         row.upravni_odbor.to_a.each do |x|
-          @peopleUO << x
+      kompupravni = Company.pluck(:upravni_odbor)
+      #Company.all.each do |row|
+      kompupravni.each do |x|
+          x.each do |y|
+    #     row.upravni_odbor.to_a.each do |x|
+          @peopleUO << y unless y == nil
          end
       end
       # takodje moram reverse
       @peopleUO.reverse!
       
-      jmbgHashUO = Hash[*@peopleUO]
+      jmbgHashUO = Hash[@peopleUO.each_slice(2).to_a]
       timesHashUO = Hash.new(0)
       @peopleUO.each{|key| timesHashUO[key] += 1}
       
@@ -212,16 +231,19 @@ class RefreshController < ApplicationController
       end
       
       ################### KAO NO
+      kompnadzorni = Company.pluck(:nadzorni_odbor)
       @peopleNO = []
-      Company.all.each do |row|
-         row.nadzorni_odbor.to_a.each do |x|
-          @peopleNO << x
+      #Company.all.each do |row|
+      kompnadzorni.each do |x|
+          x.each do |y|
+     #    row.nadzorni_odbor.to_a.each do |x|
+          @peopleNO << y unless y == nil
          end
       end
       # takodje moram reverse
       @peopleNO.reverse!
       
-      jmbgHashNO = Hash[*@peopleNO]
+      jmbgHashNO = Hash[@peopleNO.each_slice(2).to_a]
       timesHashNO = Hash.new(0)
       @peopleNO.each{|key| timesHashNO[key] += 1}
       
@@ -256,9 +278,60 @@ class RefreshController < ApplicationController
         
       end
     
-    end
+  end
   
-  
+  def unesi_delatnosti
+      
+  if x > 0 && x < 1000
+  "ПОЉОПРИВРЕДА, ШУМАРСТВО И РИБАРСТВО"  
+  end
+  if x > 1000 && x < 2000
+  "ПРЕРАЂИВАЧКА ИНДУСТРИЈА"  
+  end
+  if x > 2000 && x < 4000
+  "ПРЕРАЂИВАЧКА ИНДУСТРИЈА"  
+  end
+  if x > 4000 && x < 4500
+  "ГРАЂЕВИНАРСТВО"  
+  end
+  if x > 4500 && x < 4900
+  "ТРГОВИНА НА ВЕЛИКО И ТРГОВИНА НА МАЛО; ПОПРАВКА МОТОРНИХ ВОЗИЛА И МОТОЦИКАЛА"  
+  end
+  if x > 4900 && x < 5500
+  "САОБРАЋАЈ И СКЛАДИШТЕЊЕ"  
+  end
+  if x > 5500 && x < 5800
+  "УСЛУГЕ СМЕШТАЈА И ИСХРАНЕ"  
+  end
+  if x > 5800 && x < 6400
+  "ИНФОРМИСАЊЕ И КОМУНИКАЦИЈЕ"  
+  end
+  if x > 6400 && x < 6800
+  "ФИНАНСИЈСКЕ ДЕЛАТНОСТИ И ДЕЛАТНОСТ ОСИГУРАЊА"  
+  end
+  if x > 6800 && x < 6900
+  "ПОСЛОВАЊЕ НЕКРЕТНИНАМА"  
+  end
+  if x > 6900 && x < 7700
+  "СТРУЧНЕ, НАУЧНЕ, ИНОВАЦИОНЕ И ТЕХНИЧКЕ ДЕЛАТНОСТИ"  
+  end
+  if x > 7700 && x < 8400
+  "АДМИНИСТРАТИВНЕ И ПОМОЋНЕ УСЛУЖНЕ ДЕЛАТНОСТИ"  
+  end
+  if x > 8400 && x < 8600
+  "ДРЖАВНА УПРАВА И ОДБРАНА; ОБАВЕЗНО СОЦИЈАЛНО ОСИГУРАЊЕ"  
+  end
+  if x > 8600 && x < 9000
+  "ЗДРАВСТВЕНА И СОЦИЈАЛНА ЗАШТИТА"  
+  end
+  if x > 9000 && x < 9850
+  "УМЕТНОСТ; ЗАБАВА И РЕКРЕАЦИЈА"  
+  end
+  if x > 9850 && x < 9999
+  "ДЕЛАТНОСТ ЕКСТЕРИТОРИЈАЛНИХ ОРГАНИЗАЦИЈА И ТЕЛА"  
+  end
+ 
+  end
   
   
 end

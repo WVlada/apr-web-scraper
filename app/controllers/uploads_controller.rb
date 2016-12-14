@@ -52,7 +52,7 @@ class UploadsController < ApplicationController
     
     end
     
-    
+    check_file_passed(params[:fajl])
     redirect_to :back
     
   end
@@ -87,7 +87,7 @@ class UploadsController < ApplicationController
       #directory = "public"
       #path = File.join(directory, name)
       #File.open(path, "wb") { |f| f.write(fajl.read) }
-      File.rename("#{fajl}", "#{fajl} - prosao")
+      File.rename("#{fajl}", "#{fajl} - prosao.db")
   end
   
   def company_params

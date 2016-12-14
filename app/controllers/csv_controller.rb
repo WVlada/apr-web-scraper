@@ -4,7 +4,7 @@ class CsvController < ApplicationController
   
   def index
       
-      sve = Company.take(20005)
+      sve = Company.all
       m = 0
       
       #File.delete("./public/file.csv") if File.exist?("./public/file.csv")
@@ -26,6 +26,7 @@ class CsvController < ApplicationController
                 prvaMB << kompanija.MB
     
                 prvaMB.each do |firma|
+                            # ovo je onda suvisan uslov, ali ne smeta mnogo
                             unless kompanija.clanovi == ["greska1", "greska1jmbg"]
                               begin # zanimljiv slucaj MB=6002188, tu je Agencija za licenciranje bila zastupnik, ali je zbog nje negde dalje imao gresku
                               #20104279 ovde mi je pucao, jer Opstine kao clanovi nemaju maticne brojeve, pa je pucao pri pretvaranju u Hash

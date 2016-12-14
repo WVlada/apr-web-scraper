@@ -56,23 +56,23 @@
              ********
          </div>
          <div>
+              Ispravi upis gde nije dobar:
+             <%= link_to "Ispravka baze", "/users/#{params[:id]}/ispravka", remote: true, class:"btn btn-success btn-xs" %>
+         </div>
+        
+         <div>
              Osvezi generalne informacije o bazi:
              <%= link_to "Refresh", "/users/#{params[:id]}/refresh", remote: true, class:"btn btn-success btn-xs" %>
          </div>
-        
-        <div>
+         <div>
              Napravi csv:
              <%= link_to "Csv", "/users/#{params[:id]}/csv", remote: true, class:"btn btn-success btn-xs" %>
-         </div>
-         <div>
-             Ispravi upis gde nije dobar:
-             <%= link_to "Ispravka baze", "/users/#{params[:id]}/ispravka", remote: true, class:"btn btn-success btn-xs" %>
          </div>
      
      </div>
        
     <div class = "col-md-2">
-        <%= link_to "here", '\file.csv' %>
+        <%= link_to "CSV download file", '\file.csv' %>
         <%# Company.all.each do |x| %>
         <p> <%# x.MB %> </p>
         <%# end %>

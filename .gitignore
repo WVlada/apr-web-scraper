@@ -9,6 +9,7 @@
 
 # moje
 /public/*.csv
+/public/*.db
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
