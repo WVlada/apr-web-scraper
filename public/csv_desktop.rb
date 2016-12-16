@@ -1,36 +1,44 @@
 require 'set'
 require "csv"
-class CsvController < ApplicationController
+require "active_record"
+require "sqlite3"
+
+
   
-  def index
+def csv_desktop
       
       sve = Company.pluck(:MB)
       brojac = 0
       
-      #File.delete("./public/file.csv") if File.exist?("./public/file.csv")
-      # append fora
+      #File.delete("file.csv") if File.exist?("file.csv")
+      
       lista = []
-      CSV.foreach('./public/filerails.csv') do |row|
+      CSV.foreach('file.csv') do |row|
           lista << row[0]
       end
       
       sve.each do |kompanijaMB|
-                
+        
                 # append
                 if lista.include?(kompanijaMB.to_s)
                   puts "preskacem"
                   next
                 else
-                
+                 
                 prviMB = []
                 prviMB << kompanijaMB
     
-                prvaMB.each do |firmaMB|
+                prviMB.each do |firmaMB|
                             
-                              begin 
+                              begin
                                 jmbgHashZ = get_persons(firmaMB)
                               rescue e
-                                puts "rescue"
+                               puts "rescue"
+                              # da li ostaviti ovo?
+                              #a = Company.find_by(MB: firmaMB)
+                              #a.update(clanovi: ["greska1", "greska1jmbg"], zastupnici: ["greska1", "greska1jmbg"], ostali_zastupnici: ["greska1", "greska1jmbg"], upravni_odbor: ["greska1", "greska1jmbg"], nadzorni_odbor: ["greska1", "greska1jmbg"])
+                              #puts e
+                              #break
                               
                               end
                             
@@ -41,7 +49,6 @@ class CsvController < ApplicationController
                                             upr = Company.where("upravni_odbor LIKE ?", "%#{nameANDjmbg[1]}%")
                                             cla = Company.where("clanovi LIKE ?", "%#{nameANDjmbg[1]}%")
                                              
-                                            ######## u ovom slucaju MB
                                             ime = Company.where("MB LIKE ?", "%#{nameANDjmbg[1]}%")
                                             
                                             zas.each do |x|
@@ -62,25 +69,25 @@ class CsvController < ApplicationController
                                             ime.each do |x|
                                                   prviMB.push(x.MB) unless prviMB.include?(x.MB)
                                             end unless ime == nil
-                                        end
-        
-                CSV.open("public/filerails.csv", "a+") do |csv|
-                        prviMB.each_with_index do |mb, index| 
-                        csv << ["#{prviMB[0]}", "#{mb}" ]
-                        end
-                        puts "uneto je " + "#{brojac}"
-                        brojac = brojac + 1
-                end
-        
-                break
-        
-                end #za prvaMB.each
-                end# za IF
-      end# sve.each
-        
-      redirect_to :back
+                              end             
+               
+                              CSV.open("file.csv", "a+") do |csv|
+                                  prviMB.each_with_index do |mb, index| 
+                                    csv << ["#{prviMB[0]}", "#{mb}" ]
+                                  end
+                              puts "uneto je " + "#{brojac}"
+                              brojac = brojac + 1
+                              end
+
+                            break
+                            
+         
+                            end
+                end  
+      end  
+    #redirect_to :back
   
-  end
+end
   
   private
   
@@ -90,6 +97,7 @@ class CsvController < ApplicationController
     prva = Company.find_by(:MB => mb)
     
     unless prva.zastupnici.length == 0
+    
       prva.zastupnici.each do |y|
             if y[0].length == 0 || y[1].length == 0
               raise # moj prvi raise!!!
@@ -127,20 +135,49 @@ class CsvController < ApplicationController
     end
     unless prva.clanovi.length == 0
       prva.clanovi.to_a.each do |y|
-           if y[0].length == 0 || y[1].length == 0
+          if y[0].length == 0 || y[1].length == 0
               raise
             else
               arejprve << y
-           end
+          end
       end
     end
     
-    # jer mi kolone nisu araj arajova, nego obican aray za svakog zastupnika
     jmbgHashZ = Hash[*arejprve]
     jmbgHashZ[prva.poslovno_ime] = prva.MB.to_s
     
-    # Mora biti array, jer kroz Hash ne mogu da dodajem nove kljuceve u iteracijama, u araju moze
     return jmbgHashZ.to_a
-  end  
+  end
 
+  
+ActiveRecord::Base.establish_connection(
+  adapter: 'sqlite3',
+  database: 'csvdesktop.sqlite3'
+)
+
+class Company < ActiveRecord::Base
+    
+    serialize :zastupnici, Array
+    serialize :ostali_zastupnici, Array
+    serialize :nadzorni_odbor, Array
+    serialize :upravni_odbor, Array
+    serialize :clanovi, Array
+    
+    def new
+    @company = Company.new(company_params)
+    
+    end
+    def create
+    @company = Company.new(company_params)
+    @company.save
+    end
+  
+    
 end
+
+csv_desktop
+# x = Company.find_by(MB: 17162870)
+# puts x.clanovi
+# puts x.poslovno_ime
+# puts x.zastupnici.length
+# puts x.upravni_odbor

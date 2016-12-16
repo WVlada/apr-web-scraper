@@ -2,25 +2,36 @@
 $(document).on('ready companies.show:change', function() {
 var pocetni = gon.companies;
 var povezani = gon.povezani;
+var kombinacije = gon.kombinacije;
 var nodes = [];
 
-for (var i = 0; i < pocetni.length; i++) {
+for (var i = 0; i < povezani.length; i++) {
     nodes.push({
         data: {
-            id: pocetni[i],
-            name:pocetni[i],
+            id: povezani[i],
+            name:povezani[i],
             size: 5
         }
     });
 }
+for (var i = 0; i < kombinacije.length; i++) {
+    nodes.push({
+        data: {
+            id: String(kombinacije[i][0]) + String(kombinacije[i][1]) + i,
+            source: kombinacije[i][0],
+            target: kombinacije[i][1]
+        }
+    });
+}
+
 var cy = cytoscape({ 
   
       elements: nodes,
       container: document.getElementById('cy'),
-      style: [{ selector: 'node', style: { 'background-color': 'green', 'label': 'data(id)', 'border-style': 'double' } }]
+      style: [{ selector: 'node', style: { 'background-color': 'lightblue', 'label': 'data(id)', 'border-style': 'double' } }]
 });
 
-//var novi = cytoscape({
+//var novi = cytoscape({ ,
 //    container: document.getElementById('cy')
 //});
 //novi.add(aaa)

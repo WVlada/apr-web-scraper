@@ -11,6 +11,9 @@
 /public/*.csv
 /public/*.db
 
+# brisanje poslednjeg commita:              git reset --hard HEAD@{1}
+# brisanje poslednjeg commita sa githuba:   git push -f
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal

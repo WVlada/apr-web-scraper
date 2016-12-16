@@ -1,6 +1,8 @@
 require 'set'
 class CompaniesController < ApplicationController
 include ApplicationHelper
+include CompaniesHelper
+
   def index
     @company = Company.all
   end
@@ -11,6 +13,15 @@ include ApplicationHelper
     Company.limit(10).each do |x|
       gon.companies << precisti_ime(x.poslovno_ime)
     end
+    
+    # jer mi trebaju samo njihovi MB-ovi za grafik
+    gon.povezani = []
+    x = pretraga_povezanih(@company)
+    x.each do |y|
+      gon.povezani << y.MB
+    end
+    gon.kombinacije = gon.povezani.combination(2)
+  
   end
 
   def search
@@ -60,7 +71,7 @@ include ApplicationHelper
       rescue
       
       end
-      gon.povezani = @companies
+      
     end
   end
 #  def new
