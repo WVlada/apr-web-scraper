@@ -10,7 +10,11 @@
 # moje
 /public/*.csv
 /public/*.db
+/public/*.sqlite3
+/public/*.sqlite3-journal
 
+# top level : git rev-parse --show-toplevel
+# brisanje fajla iz svih commita: git filter-branch --tree-filter 'rm -f csvdesktop.sqlite3' HEAD
 # brisanje poslednjeg commita:              git reset --hard HEAD@{1}
 # brisanje poslednjeg commita sa githuba:   git push -f
 
