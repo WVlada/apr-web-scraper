@@ -15,6 +15,7 @@
 
 # top level : git rev-parse --show-toplevel
 # brisanje fajla iz svih commita: git filter-branch --tree-filter 'rm -f csvdesktop.sqlite3' HEAD
+# ovaj reset mi je izbrisao csv file! - uvak napraviti backup
 # brisanje poslednjeg commita:              git reset --hard HEAD@{1}
 # brisanje poslednjeg commita sa githuba:   git push -f
 

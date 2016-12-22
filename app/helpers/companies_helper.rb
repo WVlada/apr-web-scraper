@@ -3,7 +3,7 @@ require "csv"
   def pretraga_povezanih(kompanija)
         
          lista = []
-         CSV.foreach('./public/filerails.csv') do |row|
+         CSV.foreach('./public/file.csv') do |row|
             lista << [row[0], row[1]]
          end
           # lista je sada array arrayjova parova
