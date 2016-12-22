@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161118075628) do
+ActiveRecord::Schema.define(version: 20161222075320) do
 
   create_table "companies", force: :cascade do |t|
     t.integer  "MB"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20161118075628) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.string   "skraceno_ime"
+    t.string   "oblast"
   end
 
   add_index "companies", ["MB"], name: "index_companies_on_MB", unique: true
@@ -47,6 +48,13 @@ ActiveRecord::Schema.define(version: 20161118075628) do
   end
 
   add_index "company_types", ["skraceno"], name: "index_company_types_on_skraceno", unique: true
+
+  create_table "oblasts", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "broj"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "people", force: :cascade do |t|
     t.string   "ime_i_prezime"
