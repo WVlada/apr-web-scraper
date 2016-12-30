@@ -25,7 +25,7 @@
             <% end %>
             
         </section>
-        <p class="lead">Parametri: <%= params %></p>
+        
     </div>
  
     <% if @user.admin?(params[:id]) %>
@@ -72,10 +72,8 @@
      </div>
        
     <div class = "col-md-2">
-        <%= link_to "CSV download file", '\file.csv' %>
-        <%# Company.all.each do |x| %>
-        <p> <%# x.MB %> </p>
-        <%# end %>
+        <%= link_to "download CSV file", '\file.csv' %>
+        
     </div>
 
     <% end %>
@@ -90,7 +88,7 @@
     <div class = "col-md-2">
     </div>
     <div class = "col-md-8">
-        <h2> stranica rezervisana za admine</h2>
+        <h2> stranica rezervisana za administratora </h2>
     </div>
     <div class = "col-md-2">
     </div>

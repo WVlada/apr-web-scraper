@@ -1,21 +1,23 @@
 require 'set'
 class RefreshController < ApplicationController
   
-  def index
-    
+def index
+    #precisti
+    #izbaci_na
     #populate_info_base_company_types
     #populate_info_base_sectors
-    #populate_info_base_people
-    #populate_sum_column
-    populate_oblasti
-
-    redirect_to :back
-  end
-  
-  private
-  
-  def populate_info_base_company_types
+    populate_info_base_people
+    #populate_oblasti
     
+    #izbrisi_po_izboru
+    
+    redirect_to :back
+end
+
+private
+
+def populate_info_base_company_types#
+
     first_populate_company_types
     
     forma_doo = Company.where ("pravna_forma = 'Друштво са ограниченом одговорношћу'")
@@ -64,10 +66,8 @@ class RefreshController < ApplicationController
     drugo = CompanyType.find_by_skraceno("drugo")
     drugo.number = forma_drugo.count
     drugo.save
-    
-  end
-    
-  def first_populate_company_types
+end
+def first_populate_company_types
       CompanyType.delete_all
       
       CompanyType.new(idnumber: 1, name: "Društvo sa ograničenom odgovornošću", skraceno: "doo").save!
@@ -79,10 +79,9 @@ class RefreshController < ApplicationController
       CompanyType.new(idnumber: 7, name: "Društveno preduzeće", skraceno: "dp").save!
       CompanyType.new(idnumber: 8, name: "Ortačko društvo", skraceno: "od").save!
       CompanyType.new(idnumber: 9, name: "Drugo", skraceno: "drugo").save!
-      
-  end
+end
   
-  def populate_info_base_sectors
+def populate_info_base_sectors
       Sector.delete_all
       @sectors = Set.new
       
@@ -110,83 +109,74 @@ class RefreshController < ApplicationController
       Sector.all.each do |x|
         x.update(sum: "#{hash[x.number.to_i]}" )
       end
+end
+
+def populate_info_base_people
       
-  end
-  
-  def populate_info_base_people
-      Person.delete_all
+      #Person.delete_all
       
-      ################### KAO CLANOVI
-      @peopleClanovi = []
-      
-      kompclanovi = Company.pluck(:clanovi)
-      #Company.all.each do |row|
-      kompclanovi.each do |x|
-          x.each do |y|
-      #  row.clanovi.to_a.each do |x|
-      # @peopleClanovi << x
-        @peopleClanovi << y unless y == nil
-          end
-      end
-      # moram reverse, da bi mi kljucevi vili JMBG-ovi, a ne imena
-      # "Жарко Томовић"=>"2001961270050"
-      @peopleClanovi.reverse!      
-      # "2001961270050"=>"Жарко Томовић" - key -> value
-      
-      # kada se ubacuje preko 10.000 on daje: Stack to deep ERROR
-      #jmbgHash = Hash[*@peopleClanovi]
-      #RESENJE
-      jmbgHash = Hash[@peopleClanovi.each_slice(2).to_a]
-      
-      timesHash = Hash.new(0) # u @peopleClanovi su mi sacuvani duplikati, pa njih koristim
-      @peopleClanovi.each{|key| timesHash[key] += 1} # timesHash sad izgleda ovako: {"2212963782815"=>2, "Горан Николић"=>2, "0102967745011"=>2, "Јадранка Томић"=>2
-                                                     # imena i prezimena ce biti zanemarena, jer cu pretrazivati samo JMBG-ove
-      jmbgHash.each do |key, value|
+      #populate_clanovi
+      #populate_zastupnici
+      #populate_ostali_zastupnici
+      #populate_upravni_odbor
+      #populate_nadzorni_odbor
+      #populate_sum_column
+      izbrisi_strance
+end
+ 
+def populate_clanovi
+    @peopleClanovi = []
+    kompclanovi = Company.pluck(:clanovi)
+    kompclanovi.each do |x|
+        x.each do |y|
+            @peopleClanovi << y
+        end
+    end
+    @peopleClanovi.reverse! # "2001961270050"=>"Жарко Томовић" - key -> value
+    # kada se ubacuje preko 10.000 on daje: Stack to deep ERROR
+    #jmbgHash = Hash[*@peopleClanovi]
+    #RESENJE
+    jmbgHash = Hash[@peopleClanovi.each_slice(2).to_a]
+    timesHash = Hash.new(0) # u @peopleClanovi su mi sacuvani duplikati, pa njih koristim
+    @peopleClanovi.each{|key| timesHash[key] += 1} # timesHash sad izgleda ovako: {"2212963782815"=>2, "Горан Николић"=>2, "0102967745011"=>2, "Јадранка Томић"=>2
+          jmbgHash.each do |key, value|
             Person.new(ime_i_prezime: "#{value}", jmbg: "#{key}", broj_pojavljivanja_kao_clan: timesHash[key]).save!
-      end
-  
-      ################### KAO ZASTUPNICI
-      @peopleZastupnici = []
-      #Company.all.each do |row|
-      kompzastupnici = Company.pluck(:zastupnici)
-      kompzastupnici.each do |x|
-          x.each do |y|
-      #   row.zastupnici.to_a.each do |x|
-          @peopleZastupnici << y unless y == nil
-      end
-      end
-      #end
-      # takodje moram reverse
-      @peopleZastupnici.reverse!
-      
-      jmbgHashZ = Hash[@peopleZastupnici.each_slice(2).to_a]
-      timesHashZ = Hash.new(0)
-      @peopleZastupnici.each{|key| timesHashZ[key] += 1}
-      
-      jmbgHashZ.each do |key, value|
-      
-       a = Person.find_by(jmbg: key)
-         if a != nil
-         #update postojeci
-           a.update(broj_pojavljivanja_kao_zastupnik: timesHashZ[key])
-         else
+          end   
+end
+def populate_zastupnici
+    
+    @peopleZastupnici = []
+    kompzastupnici = Company.pluck(:zastupnici)
+    kompzastupnici.each do |x|
+        x.each do |y|
+            @peopleZastupnici << y
+        end
+    end
+    @peopleZastupnici.reverse!
+    jmbgHashZ = Hash[@peopleZastupnici.each_slice(2).to_a]
+    timesHashZ = Hash.new(0)
+    @peopleZastupnici.each{|key| timesHashZ[key] += 1}
+    jmbgHashZ.each do |key, value|
+        a = Person.find_by(jmbg: key)
+        if a != nil
+        #update postojeci
+            a.update(broj_pojavljivanja_kao_zastupnik: timesHashZ[key])
+        else
          #napravi novi
-           Person.new(ime_i_prezime: "#{value}", jmbg: "#{key}", broj_pojavljivanja_kao_zastupnik: timesHashZ[key]).save!
-         end
-      end
-  ################### KAO OSTALI ZASTUPNICI
+         Person.new(ime_i_prezime: "#{value}", jmbg: "#{key}", broj_pojavljivanja_kao_zastupnik: timesHashZ[key]).save!
+        end
+    end
+end
+def populate_ostali_zastupnici
       kompostali = Company.pluck(:ostali_zastupnici)
       @peopleOstaliZastupnici = []
       kompostali.each do |x|
           x.each do |y|
-      #Company.all.each do |row|
-    #     row.ostali_zastupnici.to_a.each do |x|
-          @peopleOstaliZastupnici << y unless y == nil
+               @peopleOstaliZastupnici << y
          end
       end
-      # takodje moram reverse
-      @peopleOstaliZastupnici.reverse!
       
+      @peopleOstaliZastupnici.reverse!
       jmbgHashOZ = Hash[@peopleOstaliZastupnici.each_slice(2).to_a]
       timesHashOZ = Hash.new(0)
       @peopleOstaliZastupnici.each{|key| timesHashOZ[key] += 1}
@@ -201,20 +191,18 @@ class RefreshController < ApplicationController
          #napravi novi
            Person.new(ime_i_prezime: "#{value}", jmbg: "#{key}", broj_pojavljivanja_kao_ostali_zastupnik: timesHashOZ[key]).save!
          end    
-      end
-      ################### KAO UO
+      end  
+end
+def populate_upravni_odbor
       @peopleUO = []
       kompupravni = Company.pluck(:upravni_odbor)
-      #Company.all.each do |row|
       kompupravni.each do |x|
           x.each do |y|
-    #     row.upravni_odbor.to_a.each do |x|
-          @peopleUO << y unless y == nil
+            @peopleUO << y
          end
       end
-      # takodje moram reverse
-      @peopleUO.reverse!
       
+      @peopleUO.reverse!
       jmbgHashUO = Hash[@peopleUO.each_slice(2).to_a]
       timesHashUO = Hash.new(0)
       @peopleUO.each{|key| timesHashUO[key] += 1}
@@ -223,27 +211,22 @@ class RefreshController < ApplicationController
       
        c = Person.find_by(jmbg: key)
          if c != nil
-         #update postojeci
            c.update(broj_pojavljivanja_kao_upravni: timesHashUO[key])
          else
-         #napravi novi
            Person.new(ime_i_prezime: "#{value}", jmbg: "#{key}", broj_pojavljivanja_kao_upravni: timesHashUO[key]).save!
          end    
       end
-      
-      ################### KAO NO
+end
+def populate_nadzorni_odbor
       kompnadzorni = Company.pluck(:nadzorni_odbor)
       @peopleNO = []
-      #Company.all.each do |row|
       kompnadzorni.each do |x|
           x.each do |y|
-     #    row.nadzorni_odbor.to_a.each do |x|
-          @peopleNO << y unless y == nil
+             @peopleNO << y
          end
       end
-      # takodje moram reverse
-      @peopleNO.reverse!
       
+      @peopleNO.reverse!
       jmbgHashNO = Hash[@peopleNO.each_slice(2).to_a]
       timesHashNO = Hash.new(0)
       @peopleNO.each{|key| timesHashNO[key] += 1}
@@ -252,20 +235,13 @@ class RefreshController < ApplicationController
       
        d = Person.find_by(jmbg: key)
          if d != nil
-         #update postojeci
            d.update(broj_pojavljivanja_kao_nadzorni: timesHashNO[key])
          else
-         #napravi novi
            Person.new(ime_i_prezime: "#{value}", jmbg: "#{key}", broj_pojavljivanja_kao_nadzorni: timesHashNO[key]).save!
          end    
       end
-  
-  populate_sum_column
-  
-  end
-  
-  def populate_sum_column
-  
+end
+def populate_sum_column
     svi = Person.all
     svi.each do |row|
       b = 0
@@ -278,12 +254,11 @@ class RefreshController < ApplicationController
       row.update(ukupno: b)
         
       end
-    
-  end
-  
-  
-  def populate_oblasti
-      
+end
+def izbrisi_strance
+    Person.where(ime_i_prezime: "Странац - Број пасоша").delete_all
+end
+def populate_oblasti
       Company.all.each do |kompanija|
       
         x = kompanija.sifra_delatnosti.to_i
@@ -340,8 +315,191 @@ class RefreshController < ApplicationController
        kompanija.update(oblast: ob)
        
       end
+end
+  
+def izbrisi_po_izboru
+      x = []
+      
+      jmbg_za_brisanje = "2303981870018"
+      
+      x << Company.where("clanovi LIKE ?", "%#{jmbg_za_brisanje}%")
+      x << Company.where("zastupnici LIKE ?", "%#{jmbg_za_brisanje}%")
+      
+      #a = Company.find_by(MB: firmaMB)
+      #a.update(clanovi: ["greska1", "greska1jmbg"], zastupnici: ["greska1", "greska1jmbg"], ostali_zastupnici: ["greska1", "greska1jmbg"], upravni_odbor: ["greska1", "greska1jmbg"], nadzorni_odbor: ["greska1", "greska1jmbg"])
+      mbovi = []
+      x.each do |y|
+        y.each do |z|
+          mbovi << z.MB
+        end
+      end
+      mbovi.each do |m|
+        Company.where(mb: m).destroy_all
+        puts "destroyed"
+      end
+end
+
+def precisti
+
+    pocetak1 = 42798
+    kraj1 = 50000
+    pocetak2 = 49999
+    kraj2 = 60000
+    pocetak3 = 59999
+    kraj3 = 70000
+    pocetak4 = 69999
+    kraj4 = 80000
+    pocetak5 = 79999
+    kraj5 = 90000
+    pocetak6 = 89999
+    kraj6 = 100000
+    pocetak7 = 99999
+    kraj7 = 110000
+    pocetak8 = 109999
+    kraj8 = 120000
+    pocetak9 = 119999
+    kraj9 = 130000
+    pocetak10 = 129999
+    kraj10 = 140000
+    pocetak11 = 139999
+    kraj11 = 150000
+    pocetak12 = 149999
+    kraj12 = 160000
     
-  
-  end
-  
+    sve = Company.where(:id => pocetak12..kraj12)
+    sve = Company.where(:id => 138415)
+    #sve = Company.where("clanovi LIKE ?", "%Тип: Ак%")
+    #sve = []
+    #sve << Company.where("clanovi LIKE ?", "%Тип: Ак%").first
+    
+    brojac = 1
+    sve.each do |firma|
+            y = []
+            y = precisti_array(firma.clanovi)
+            firma.update(clanovi: y)
+            
+            z = []
+            z = precisti_array(firma.zastupnici)
+            firma.update(zastupnici: z)
+            
+            m = []
+            m = precisti_array(firma.ostali_zastupnici)
+            firma.update(ostali_zastupnici: m)
+            
+            k = []
+            k = precisti_array(firma.upravni_odbor)
+            firma.update(upravni_odbor: k)
+            
+            l = []
+            l = precisti_array(firma.nadzorni_odbor)
+            firma.update(nadzorni_odbor: l)
+        
+        puts brojac
+        brojac += 1
+    end 
+end
+
+def precisti_array(array)
+    novi = []
+    # ovo je uneto za drustva koje nemaju clanove
+    if array.length == 0
+        novi << "n/a"
+        novi << "n/a"
+    end
+    # sad tek moze ciscenje
+    array.each_with_index do |x,i|
+            if i % 2 == 0
+                novi << x
+            else
+                if x =~ /\A\d+\Z/
+                    novi << x
+                else
+                    novi << array[i-1]
+                end
+            end
+    end
+    
+    novi2 = []
+    novi.each_slice(2).to_a.each do |x|
+        if x[0] =~ /(Друштвени капитал)/ || x[1] =~ /(Друштвени капитал)/
+            novi2 << "Друштвени капитал"
+            novi2 << "Друштвени капитал"
+        elsif x[0] =~ /(Акцијски капитал)/ || x[1] =~ /(Акцијски капитал)/
+            novi2 << "Акцијски капитал"
+            novi2 << "Акцијски капитал"
+        elsif x[0] =~ /(Државни капитал)/ || x[1] =~ /(Државни капитал)/
+            novi2 << "Државни капитал"
+            novi2 << "Државни капитал"
+        elsif x[0] =~ /(РЕПУБЛИКА СРБИЈА)/ || x[1] =~ /(РЕПУБЛИКА СРБИЈА)/
+            novi2 << "РЕПУБЛИКА СРБИЈА"
+            novi2 << "РЕПУБЛИКА СРБИЈА"
+        elsif x[0] =~ /(REPUBLIKA SRBIJA)/ || x[1] =~ /(REPUBLIKA SRBIJA)/
+            novi2 << "РЕПУБЛИКА СРБИЈА"
+            novi2 << "РЕПУБЛИКА СРБИЈА"
+        elsif x[0] =~ /(ОПШТИНА)/ || x[1] =~ /(ОПШТИНА)/ || x[0] =~ /(OPŠTINE)/ || x[1] =~ /(OPŠTINЕ)/ || x[0] =~ /(OPŠTINА)/ || x[1] =~ /(OPŠTINА)/
+            novi2 << "ОПШТИНА"
+            novi2 << "ОПШТИНА"
+        elsif x[0] =~ /(Број пасоша)/ || x[1] =~ /(Број пасоша)/
+            novi2 << "Странац - Број пасоша"
+            novi2 << "Странац - Број пасоша"
+        else
+            novi2 << x[0]
+            novi2 << x[1]
+        end
+    end
+    return novi2
+end
+
+def izbaci_na
+    
+    pocetak1 = 42798
+    kraj1 = 50000
+    pocetak2 = 49999
+    kraj2 = 60000
+    pocetak3 = 59999
+    kraj3 = 70000
+    pocetak4 = 69999
+    kraj4 = 80000
+    pocetak5 = 79999
+    kraj5 = 90000
+    pocetak6 = 89999
+    kraj6 = 100000
+    pocetak7 = 99999
+    kraj7 = 110000
+    pocetak8 = 109999
+    kraj8 = 120000
+    pocetak9 = 119999
+    kraj9 = 130000
+    pocetak10 = 129999
+    kraj10 = 140000
+    pocetak11 = 139999
+    kraj11 = 150000
+    pocetak12 = 149999
+    kraj12 = 160000
+    
+    sve = Company.where(:id => pocetak12..kraj12)
+    brojac = 1
+    sve.each do |kompanija|
+        c = kompanija.clanovi
+        c.delete("n/a")
+        z = kompanija.zastupnici
+        z.delete("n/a")
+        o = kompanija.ostali_zastupnici
+        o.delete("n/a")
+        u = kompanija.upravni_odbor
+        u.delete("n/a")
+        n = kompanija.nadzorni_odbor
+        n.delete("n/a")
+        
+        kompanija.update(clanovi: c)
+        kompanija.update(zastupnici: z)
+        kompanija.update(ostali_zastupnici: o)
+        kompanija.update(upravni_odbor: u)
+        kompanija.update(nadzorni_odbor: n)
+        puts brojac
+        brojac += 1
+    end
+    
+end
+
 end

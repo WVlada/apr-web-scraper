@@ -38,7 +38,7 @@ en:
        -  APR uses JS for search fields, so Mechanize wouldnt do. Capybara + phantomjs were used for headless scraping.
        -  Each page set was defined with SitePrism. A page set coresponds with type of company.
        -  APR webiste has much better protection. In addition to JS, it temporary bans the apps adress, for aprox. 24 hours.
-       -  In each turn, it allows only about 100 pages to be scraped from one adress. This part took the longest. Three apps were used, local and cloud. Approx. 8 months.
+       -  In each turn, it allows only about 100 pages to be scraped from one adress. This part took the longest. Three apps were used, local and cloud. Approx. 8 months for 65.77% coverage of cca. 170.000 companies according to official data.
        <b>3. Cleaning raw data.</b>
        -  Data had to be extracted using regular expressions, and saved to new mysql database.
        -  It was easier to upload raw file to app, and then to add every file 1 by 1.
@@ -46,6 +46,7 @@ en:
        -  Again data had to be reorganized to match criteria of network visualization software.
        -  Cytoscape is used for complete network images.
        -  Cytoscape.js is used in-app for graphic representation of single searched entities and their connected entities.
+       -  Out of 111k companies, only around 30% are used for onepic-graph of economy, because of memory and cpu limits.  
     carrousel_title_1: "Database search of legal entities"
     carrousel_text_1: "Search of legal entities, by name, by owner, members of management, ceo`s...  "
     carrousel_link_1: "Search"

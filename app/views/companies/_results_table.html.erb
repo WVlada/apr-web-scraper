@@ -23,7 +23,7 @@
                         <% @companies.each_with_index do |x,i| %>
                         <tr>
                             <td><%= i %></td>
-                            <td><%= link_to x.MB, x %></td>
+                            <td><%= link_to x.MB, x, data: { no_turbolink: true } %></td>
                             <td><%= x.zastupnici[0] %><%=", jmbg: "%> <%= x.zastupnici[1] %></td>
                             <td><%= x.naziv_delatnosti %></td>
                             <td><%= precisti_ime(x.poslovno_ime) %></td>

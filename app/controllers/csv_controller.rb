@@ -25,53 +25,40 @@ class CsvController < ApplicationController
                 prviMB = []
                 prviMB << kompanijaMB
     
-                prvaMB.each do |firmaMB|
+                prviMB.each do |firmaMB|
                             
                               begin 
                                 jmbgHashZ = get_persons(firmaMB)
-                              rescue e
+                              rescue
                                 puts "rescue"
-                              
                               end
-                            
+                              
+                              #povezanost_preko = ""
                               jmbgHashZ.each do |nameANDjmbg|
-                                            zas = Company.where("zastupnici LIKE ?", "%#{nameANDjmbg[1]}%")
-                                            ost = Company.where("ostali_zastupnici LIKE ?", "%#{nameANDjmbg[1]}%")
-                                            nad = Company.where("nadzorni_odbor LIKE ?", "%#{nameANDjmbg[1]}%")
-                                            upr = Company.where("upravni_odbor LIKE ?", "%#{nameANDjmbg[1]}%")
-                                            cla = Company.where("clanovi LIKE ?", "%#{nameANDjmbg[1]}%")
-                                             
-                                            ######## u ovom slucaju MB
-                                            ime = Company.where("MB LIKE ?", "%#{nameANDjmbg[1]}%")
                                             
-                                            zas.each do |x|
+                                          # moram nekako izbaciti broj pasosa, ostali imaju smisla zbog drzavnog sektora
+                                          if nameANDjmbg[1] =~ /\A\d+\Z/
+                                            broj = Company.where('zastupnici LIKE :search OR ostali_zastupnici LIKE :search OR nadzorni_odbor LIKE :search OR upravni_odbor LIKE :search OR clanovi LIKE :search OR MB LIKE :search', search: "%#{nameANDjmbg[1]}%")
+                                          else
+                                            # neka bude za pocetak bez stranaca
+                                            broj = Company.where('zastupnici LIKE :search OR ostali_zastupnici LIKE :search OR nadzorni_odbor LIKE :search OR upravni_odbor LIKE :search OR clanovi LIKE :search OR MB LIKE :search', search: "%#{nameANDjmbg[0]}%") unless nameANDjmbg[0] == "Странац - Број пасоша"
+                                          end
+                                            
+                                            broj.each do |x|
                                                   prviMB.push(x.MB) unless prviMB.include?(x.MB)
-                                            end unless zas == nil
-                                            ost.each do |x|
-                                                  prviMB.push(x.MB) unless prviMB.include?(x.MB)
-                                            end unless ost == nil
-                                            nad.each do |x|
-                                                  prviMB.push(x.MB) unless prviMB.include?(x.MB)
-                                            end unless nad == nil
-                                            upr.each do |x|
-                                                  prviMB.push(x.MB) unless prviMB.include?(x.MB)
-                                            end unless upr == nil
-                                            cla.each do |x|
-                                                  prviMB.push(x.MB) unless prviMB.include?(x.MB)
-                                            end unless cla == nil
-                                            ime.each do |x|
-                                                  prviMB.push(x.MB) unless prviMB.include?(x.MB)
-                                            end unless ime == nil
-                                        end
+                                            end unless broj == nil
+                              
+                              end#
         
                 CSV.open("public/filerails.csv", "a+") do |csv|
                         prviMB.each_with_index do |mb, index| 
-                        csv << ["#{prviMB[0]}", "#{mb}" ]
+                        csv << ["#{prviMB[0]}", mb ]
                         end
                         puts "uneto je " + "#{brojac}"
                         brojac = brojac + 1
                 end
-        
+                #
+                
                 break
         
                 end #za prvaMB.each
@@ -86,7 +73,8 @@ class CsvController < ApplicationController
   
   def get_persons(mb) 
       
-    arejprve = Set.new
+    #arejprve = Set.new - ne sme biti set zbog ispravki koje sam uneo, da se imena ponavljaju
+    arejprve = []
     prva = Company.find_by(:MB => mb)
     
     unless prva.zastupnici.length == 0
@@ -94,7 +82,7 @@ class CsvController < ApplicationController
             if y[0].length == 0 || y[1].length == 0
               raise # moj prvi raise!!!
             else
-              arejprve << y
+              arejprve << y unless y == ["n/a", "n/a"]
             end
       end
     end
@@ -103,7 +91,7 @@ class CsvController < ApplicationController
             if y[0].length == 0 || y[1].length == 0
               raise
             else
-              arejprve << y
+              arejprve << y unless y == ["n/a", "n/a"]
             end
       end
     end
@@ -112,8 +100,8 @@ class CsvController < ApplicationController
             if y[0].length == 0 || y[1].length == 0
               raise
             else
-              arejprve << y
-            end
+              arejprve << y unless y == ["n/a", "n/a"]
+            end 
       end
     end
     unless prva.nadzorni_odbor.length == 0
@@ -121,7 +109,7 @@ class CsvController < ApplicationController
             if y[0].length == 0 || y[1].length == 0
               raise
             else
-              arejprve << y
+              arejprve << y unless y == ["n/a", "n/a"]
             end
       end
     end
@@ -130,7 +118,7 @@ class CsvController < ApplicationController
            if y[0].length == 0 || y[1].length == 0
               raise
             else
-              arejprve << y
+              arejprve << y unless y == ["n/a", "n/a"]
            end
       end
     end

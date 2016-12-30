@@ -17,8 +17,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                <%# @povezani = pretraga_povezanih(@zastupnici, @ostali_zastupnici, @nadzorni_odbor, @upravni_odbor, @clanovi, @company) %>
-                <% @povezani = pretraga_povezanih(@company) %>
+                <%# cisto da @user.id ne baci gresku kad je nil %>
+                <% if @user %> 
+                    <% if @user.admin?(@user.id) %>
+                        <% @povezani = pretraga_povezanih_admin(@company) %>
+                    <% else %>
+                        <% @povezani = pretraga_povezanih(@company) %>
+                    <% end %>
+                <% else %>
+                     <% @povezani = pretraga_povezanih(@company) %>
+                <% end %>
                 <% @povezani.each_with_index do |x,i| %>
                     <tr>
                         <td><%= i+1 %></td>
