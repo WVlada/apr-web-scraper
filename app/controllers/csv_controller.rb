@@ -26,16 +26,15 @@ class CsvController < ApplicationController
                 prviMB << kompanijaMB
     
                 prviMB.each do |firmaMB|
-                            
+                drugi = [] # ovaj se isto resetuje posle breaka            
                               begin 
                                 jmbgHashZ = get_persons(firmaMB)
                               rescue
                                 puts "rescue"
                               end
                               
-                              #povezanost_preko = ""
                               jmbgHashZ.each do |nameANDjmbg|
-                                            
+                                          povezanost_preko = ""# ovaj se resetuje za svakog Persona              
                                           # moram nekako izbaciti broj pasosa, ostali imaju smisla zbog drzavnog sektora
                                           if nameANDjmbg[1] =~ /\A\d+\Z/
                                             broj = Company.where('zastupnici LIKE :search OR ostali_zastupnici LIKE :search OR nadzorni_odbor LIKE :search OR upravni_odbor LIKE :search OR clanovi LIKE :search OR MB LIKE :search', search: "%#{nameANDjmbg[1]}%")
@@ -43,23 +42,31 @@ class CsvController < ApplicationController
                                             # neka bude za pocetak bez stranaca
                                             broj = Company.where('zastupnici LIKE :search OR ostali_zastupnici LIKE :search OR nadzorni_odbor LIKE :search OR upravni_odbor LIKE :search OR clanovi LIKE :search OR MB LIKE :search', search: "%#{nameANDjmbg[0]}%") unless nameANDjmbg[0] == "Странац - Број пасоша"
                                           end
-                                            
-                                            broj.each do |x|
-                                                  prviMB.push(x.MB) unless prviMB.include?(x.MB)
-                                            end unless broj == nil
+                                          
+                                          povezanost_preko = nameANDjmbg[0]  
+                                          broj.each do |x|
+                                                # mora unless inace dodaje duplikate za svakog Persona
+                                                # ali moram da unosim selfloop, jer ne bi bilo singl-nodova
+                                                # a unless prviMB iskljucuje cak i self-loop
+                                                drugi.push([x.MB, povezanost_preko]) unless prviMB.include?(x.MB) 
+                                          end unless broj == nil
                               
                               end#
-        
+                # ovaj prvi upis ide za self-loop-ove da bih dobio i singl nodove              
                 CSV.open("public/filerails.csv", "a+") do |csv|
-                        prviMB.each_with_index do |mb, index| 
-                        csv << ["#{prviMB[0]}", mb ]
+                  csv << ["#{prviMB[0]}", "#{prviMB[0]}" ]
+                end
+                # ovaj drugi loop ide za povezanost i on ima 3 upisa
+                CSV.open("public/filerails.csv", "a+") do |csv|
+                        drugi.each_with_index do |mb, index| 
+                        csv << ["#{prviMB[0]}", mb[0], mb[1] ]
                         end
                         puts "uneto je " + "#{brojac}"
                         brojac = brojac + 1
                 end
                 #
                 
-                break
+                break #ovaj brejk ne dozvoljava veze drugog i visih nivoa
         
                 end #za prvaMB.each
                 end# za IF
