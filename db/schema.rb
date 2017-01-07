@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20161222080718) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "companies", force: :cascade do |t|
     t.integer  "MB"
     t.string   "poslovno_ime"
@@ -32,11 +35,10 @@ ActiveRecord::Schema.define(version: 20161222080718) do
     t.text     "clanovi"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.string   "skraceno_ime"
     t.string   "oblast"
   end
 
-  add_index "companies", ["MB"], name: "index_companies_on_MB", unique: true
+  add_index "companies", ["MB"], name: "index_companies_on_MB", unique: true, using: :btree
 
   create_table "company_types", force: :cascade do |t|
     t.integer  "idnumber"
@@ -47,7 +49,7 @@ ActiveRecord::Schema.define(version: 20161222080718) do
     t.integer  "number"
   end
 
-  add_index "company_types", ["skraceno"], name: "index_company_types_on_skraceno", unique: true
+  add_index "company_types", ["skraceno"], name: "index_company_types_on_skraceno", unique: true, using: :btree
 
   create_table "oblasts", force: :cascade do |t|
     t.string   "name"
@@ -87,6 +89,6 @@ ActiveRecord::Schema.define(version: 20161222080718) do
     t.integer  "admin"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end

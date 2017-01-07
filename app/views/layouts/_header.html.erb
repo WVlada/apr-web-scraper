@@ -30,7 +30,11 @@
         
             <div class="container vlada">
                 <a class="navbar-brand" href="/">Projekat webscrAPR</a>
-                <span class="label label-default">In development</span>
+                <% if Rails.env.production? %>
+                <span class="label label-default">production</span>
+                <% else %>
+                <span class="label label-default">in development</span>
+                <% end %>
             </div>
     </div>
 </nav>
