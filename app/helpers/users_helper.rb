@@ -9,7 +9,7 @@ module UsersHelper
   def ima_li_baza_koje_nisu_prosle?
       files = Dir["#{Rails.root}/public/*.db"]
       files.each_with_index do |x,i|
-        return true if x.to_s !=~ /prosao/
+        return false if x.to_s !=~ /prosao/
       end
   end
   
