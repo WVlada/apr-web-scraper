@@ -1,0 +1,101 @@
+Script started on Tue 17 Jan 2017 07:52:51 AM UTC
+[01;32mwvlada[00m:[01;34m~/workspace[00m (master) $ exit[Kls
+Gemfile       README.md    Rakefile  [0m[01;34mapp[0m/  [01;34mconfig[0m/    [01;34mdb[0m/        [01;34mhowtest[0m/  [01;34mlog[0m/      [01;34mpublic[0m/     [01;34mtest[0m/  typescript
+Gemfile.lock  README.rdoc  a.out     [01;34mbin[0m/  config.ru  [01;34mhowitzer[0m/  [01;34mlib[0m/      proba.rb  script1.sh  [01;34mtmp[0m/   [01;34mvendor[0m/
+[01;32mwvlada[00m:[01;34m~/workspace[00m (master) $ scr
+screendump    script        scriptreplay  
+[01;32mwvlada[00m:[01;34m~/workspace[00m (master) $ script.sh
+bash: script.sh: command not found
+[01;32mwvlada[00m:[01;34m~/workspace[00m (master) $ script.sh[C1.sh
+bash: script1.sh: command not found
+[01;32mwvlada[00m:[01;34m~/workspace[00m (master) $ chmod u+x script1.sh
+[01;32mwvlada[00m:[01;34m~/workspace[00m (master) $ chmod u+x script1.sh[10Pscript1.sh
+bash: script1.sh: command not found
+[01;32mwvlada[00m:[01;34m~/workspace[00m (master) $ script1.sh
+bash: script1.sh: command not found
+[01;32mwvlada[00m:[01;34m~/workspace[00m (master) $ ls
+Gemfile       README.md    Rakefile  [0m[01;34mapp[0m/  [01;34mconfig[0m/    [01;34mdb[0m/        [01;34mhowtest[0m/  [01;34mlog[0m/      [01;34mpublic[0m/      [01;34mtest[0m/  typescript
+Gemfile.lock  README.rdoc  a.out     [01;34mbin[0m/  config.ru  [01;34mhowitzer[0m/  [01;34mlib[0m/      proba.rb  [01;32mscript1.sh[0m*  [01;34mtmp[0m/   [01;34mvendor[0m/
+[01;32mwvlada[00m:[01;34m~/workspace[00m (master) $ ls -l script1.sh
+-rwxr--r-- 1 ubuntu ubuntu 29 Jan 17 07:52 [0m[01;32mscript1.sh[0m*
+[01;32mwvlada[00m:[01;34m~/workspace[00m (master) $ ls -l script1.sh[K[K[K[K[K[K[K[K[K[K[K[K[K
+Gemfile       README.md    Rakefile  [0m[01;34mapp[0m/  [01;34mconfig[0m/    [01;34mdb[0m/        [01;34mhowtest[0m/  [01;34mlog[0m/      [01;34mpublic[0m/      [01;34mtest[0m/  typescript
+Gemfile.lock  README.rdoc  a.out     [01;34mbin[0m/  config.ru  [01;34mhowitzer[0m/  [01;34mlib[0m/      proba.rb  [01;32mscript1.sh[0m*  [01;34mtmp[0m/   [01;34mvendor[0m/
+[01;32mwvlada[00m:[01;34m~/workspace[00m (master) $ sh script1.sh
+ * Starting PostgreSQL 9.3 database server
+   ...done.
+[01;32mwvlada[00m:[01;34m~/workspace[00m (master) $ rails c
+Running via Spring preloader in process 3838
+Loading development environment (Rails 4.2.5)
+2.3.0 :001 > Users
+NameError: uninitialized constant Users
+	from (irb):1
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/railties-4.2.5/lib/rails/commands/console.rb:110:in `start'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/railties-4.2.5/lib/rails/commands/console.rb:9:in `start'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/railties-4.2.5/lib/rails/commands/commands_tasks.rb:68:in `console'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/railties-4.2.5/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/railties-4.2.5/lib/rails/commands.rb:17:in `<top (required)>'
+	from /home/ubuntu/workspace/bin/rails:9:in `<top (required)>'
+	from /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+	from /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+	from -e:1:in `<main>'
+2.3.0 :002 > Users[K.all
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users"[0m
+ => #<ActiveRecord::Relation []> 
+2.3.0 :003 > User.all[K[K[K[K[K[Ker.first.adnmi[K[K[Kmin
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+NoMethodError: undefined method `admin' for nil:NilClass
+	from (irb):3
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/railties-4.2.5/lib/rails/commands/console.rb:110:in `start'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/railties-4.2.5/lib/rails/commands/console.rb:9:in `start'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/railties-4.2.5/lib/rails/commands/commands_tasks.rb:68:in `console'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/railties-4.2.5/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/railties-4.2.5/lib/rails/commands.rb:17:in `<top (required)>'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/activesupport-4.2.5/lib/active_support/dependencies.rb:274:in `require'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/activesupport-4.2.5/lib/active_support/dependencies.rb:274:in `block in require'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/activesupport-4.2.5/lib/active_support/dependencies.rb:240:in `load_dependency'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/activesupport-4.2.5/lib/active_support/dependencies.rb:274:in `require'
+	from /home/ubuntu/workspace/bin/rails:9:in `<top (required)>'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/activesupport-4.2.5/lib/active_support/dependencies.rb:268:in `load'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/activesupport-4.2.5/lib/active_support/dependencies.rb:268:in `block in load'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/activesupport-4.2.5/lib/active_support/dependencies.rb:240:in `load_dependency'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/activesupport-4.2.5/lib/active_support/dependencies.rb:268:in `load'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/spring-1.6.4/lib/spring/commands/rails.rb:6:in `call'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/spring-1.6.4/lib/spring/command_wrapper.rb:38:in `call'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/spring-1.6.4/lib/spring/application.rb:185:in `block in serve'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/spring-1.6.4/lib/spring/application.rb:156:in `fork'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/spring-1.6.4/lib/spring/application.rb:156:in `serve'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/spring-1.6.4/lib/spring/application.rb:131:in `block in run'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/spring-1.6.4/lib/spring/application.rb:125:in `loop'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/spring-1.6.4/lib/spring/application.rb:125:in `run'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/spring-1.6.4/lib/spring/application/boot.rb:18:in `<top (required)>'
+	from /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+	from /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+	from -e:1:in `<main>'2.3.0 :004 > 
+2.3.0 :005 >   User.find_by(admin: 1)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."admin" = $1 LIMIT 1[0m  [["admin", 1]]
+ => nil 
+2.3.0 :006 > exit
+[01;32mwvlada[00m:[01;34m~/workspace[00m (master) $ rails c
+Running via Spring preloader in process 3932
+Loading development environment (Rails 4.2.5)
+2.3.0 :001 > User.all
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users"[0m
+ => #<ActiveRecord::Relation []> 
+2.3.0 :002 > Users.delete_all
+NameError: uninitialized constant Users
+	from (irb):2
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/railties-4.2.5/lib/rails/commands/console.rb:110:in `start'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/railties-4.2.5/lib/rails/commands/console.rb:9:in `start'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/railties-4.2.5/lib/rails/commands/commands_tasks.rb:68:in `console'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/railties-4.2.5/lib/rails/commands/commands_tasks.rb:39:in `run_command!'
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/railties-4.2.5/lib/rails/commands.rb:17:in `<top (required)>'
+	from /home/ubuntu/workspace/bin/rails:9:in `<top (required)>'
+	from /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+	from /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+	from -e:1:in `<main>'
+2.3.0 :003 > Users.delete_all[K[K[K[K
+NameError: uninitialized constant Users
+	from (irb):3
+	from /usr/local/rvm/gems/ruby-2.3.0/gems/railties-4.2.5/lib/rails/commands/console.rb:110:in `start'
+	from /usr/local/rvm/g

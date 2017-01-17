@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   
   def new
-    
+    chech_if_admin_exists_and_create_if_no
   end
   
   def create
@@ -22,5 +22,17 @@ class SessionsController < ApplicationController
     log_out
     redirect_to root_url
   end
+  private
   
+  def chech_if_admin_exists_and_create_if_no
+    user = User.find_by(admin: 1)
+    if user
+    # ok postoji vec
+    else
+    # napravi admina
+      x =  User.create(name: "vladimir",password: "vladimir", email: "vlada@gmail.com", admin: 1)
+      x.save!
+    end
+  end
+
 end

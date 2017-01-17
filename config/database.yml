@@ -3,7 +3,6 @@
 #
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
-#
 default: &default
   adapter: postgresql
   pool: 5
@@ -12,18 +11,27 @@ default: &default
 development:
   <<: *default
   adapter: postgresql
-  database: db/development
+  database: db/development_pg
   template: template0
+  #username: username
+  #password: password
+  
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test
+  database: db/test_pg
   template: template0
+  #username: postgres
+  #password:
+  #host: localhost
 
 production:
   <<: *default
-  database: db/production
+  database: db/production_pg
   template: template0
+  #username: postgres
+  #password:
+  #host: localhost
