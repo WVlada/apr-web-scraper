@@ -66,6 +66,15 @@
              <%= link_to "Csv", "/users/#{params[:id]}/csv", remote: true, class:"btn btn-success btn-xs" %>
          </div>
      
+     <div class="jmbg_za_brisanje">
+         <form>
+             <input type="text" class="form-control" name="jmbg_param" placeholder="JMBG za brisanje..."> </input>   
+             <%= button_to "Izbrisi", "/users/#{params[:id]}/izbrisijmbg"  %>   
+             <%= params %>
+         </form>
+         
+     </div>
+     
      </div>
        
     <div class = "col-md-2">

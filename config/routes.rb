@@ -19,7 +19,8 @@ Rails.application.routes.draw do
   match 'sr',     to: 'static#srpski',  via: 'get'
   match 'es',     to: 'static#espanol',  via: 'get'
   
-  #
+  #match '/izbrisijmbg/index', to: 'izbrisijmbg#index', via: 'get'
+  
   
   resources :users do
     resources :uploads
@@ -30,8 +31,11 @@ Rails.application.routes.draw do
   resources :users do
     resources :csv
   end
-   resources :users do
+  resources :users do
     resources :ispravka
+  end
+  resources :users do
+    resources :izbrisijmbg
   end
 
   get '/bla' => 'uploads#unesi'
@@ -56,8 +60,7 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
+  resources :users
   # Example resource route with options:
   #   resources :products do
   #     member do

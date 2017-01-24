@@ -14,4 +14,5 @@ class User < ActiveRecord::Base
     def admin?(id)
         return true if User.find_by(id: id).admin == 1
     end
+    
 end

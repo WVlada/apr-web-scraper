@@ -2,14 +2,14 @@ require 'set'
 class RefreshController < ApplicationController
   
 def index
-    #precisti
-    #izbaci_na
-    #populate_info_base_company_types
-    #populate_info_base_sectors
+    precisti
+    izbaci_na
+    populate_info_base_company_types
+    populate_info_base_sectors
     populate_info_base_people
-    #populate_oblasti
+    populate_oblasti
     
-    #izbrisi_po_izboru
+    izbrisi_po_izboru
     
     redirect_to :back
 end
@@ -113,14 +113,15 @@ end
 
 def populate_info_base_people
       
-      #Person.delete_all
+      Person.delete_all
       
-      #populate_clanovi
-      #populate_zastupnici
-      #populate_ostali_zastupnici
-      #populate_upravni_odbor
-      #populate_nadzorni_odbor
-      #populate_sum_column
+      populate_clanovi
+      populate_zastupnici
+      populate_ostali_zastupnici
+      populate_upravni_odbor
+      populate_nadzorni_odbor
+      
+      populate_sum_column
       izbrisi_strance
 end
  
@@ -341,7 +342,10 @@ end
 
 def precisti
 
-    pocetak1 = 42798
+    pocetak1 = Company.first.id.to_i
+    kraj12 = Company.last.id.to_i
+
+    #pocetak1 = 42798
     kraj1 = 50000
     pocetak2 = 49999
     kraj2 = 60000
@@ -364,10 +368,10 @@ def precisti
     pocetak11 = 139999
     kraj11 = 150000
     pocetak12 = 149999
-    kraj12 = 160000
+    #kraj12 = 160000
     
-    sve = Company.where(:id => pocetak12..kraj12)
-    sve = Company.where(:id => 138415)
+    sve = Company.where(:id => pocetak1..kraj12)
+    #sve = Company.where(:id => 138415)
     #sve = Company.where("clanovi LIKE ?", "%Тип: Ак%")
     #sve = []
     #sve << Company.where("clanovi LIKE ?", "%Тип: Ак%").first
@@ -452,7 +456,11 @@ end
 
 def izbaci_na
     
-    pocetak1 = 42798
+    pocetak1 = Company.first.id.to_i
+    kraj12 = Company.last.id.to_i
+    
+    
+    #pocetak1 = 42798
     kraj1 = 50000
     pocetak2 = 49999
     kraj2 = 60000
@@ -475,9 +483,9 @@ def izbaci_na
     pocetak11 = 139999
     kraj11 = 150000
     pocetak12 = 149999
-    kraj12 = 160000
+    #kraj12 = 160000
     
-    sve = Company.where(:id => pocetak12..kraj12)
+    sve = Company.where(:id => pocetak1..kraj12)
     brojac = 1
     sve.each do |kompanija|
         c = kompanija.clanovi
