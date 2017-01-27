@@ -7,14 +7,14 @@ module UsersHelper
   end
   
   def ima_li_baza_koje_nisu_prosle?
-      files = Dir["#{Rails.root}/public/*.db"]
+      files = Dir["#{Rails.root}/public/*db.csv"]
       files.each_with_index do |x,i|
-        return false if x.to_s !=~ /prosao/
+        return true if x.to_s !=~ /prosao/
       end
   end
   
   def lista_baza_koje_nisu_prosle
-      files = Dir["#{Rails.root}/public/*.db"]
+      files = Dir["#{Rails.root}/public/*db.csv"]
       neuneti_files = []
       files.each_with_index do |x,i|
         if x.to_s =~ /prosao/

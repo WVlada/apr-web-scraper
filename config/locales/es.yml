@@ -43,6 +43,7 @@ es:
         - De nuevo los datos tuvieron que ser reorganizados para que coincidieran con los criterios del software de visualización de la red.
         - Cytoscape se utiliza para imágenes de red completas.
         - Cytoscape.js se utiliza en la aplicación para la representación gráfica de entidades buscadas únicas y sus entidades conectadas.
+        - Dado que esta aplicación está alojada en Heroku, la base de datos sólo puede contener 10k filas (empresas). La búsqueda completa está disponible en - www.apr-wvlada.c9users.io
   AboutPage:
     title: "Acerca de la página Bienvenido"
     text: "Esto se trata de la página."

@@ -1,55 +1,49 @@
 class UploadsController < ApplicationController
   
   def unesi
-    # READ DATABASE
-     # array arrayova
+
     puts params[:fajl]
-    $baza = SQLite3::Database.new "#{params[:fajl]}" 
-    pocetni_array = $baza.execute "SELECT * FROM Entiteti WHERE clanoviBLOB IS NOT null"
+
+    pocetni_array = []
+    CSV.foreach("#{params[:fajl]}", {:col_sep => "xxxx"}) do |row|
+        pocetni_array << row
+    end
     
     # SELECT ALL MBS and SAVE THEM
-     
-     pocetni_array.each do |x|
-     params[:company] = {}   	
-     x_pravnaforma = x[2].scan(/Правна форма:(.*?)Седиште: Општина:/)
-     
-     if x_pravnaforma.empty?
-         #ovime sam resio udruzenje, jer ono x_pravnaforma vraca nil - iako je greska nil - ali samo za prvog clana araaya, nego prazan array
-      next
-     end
-     
-     if x_pravnaforma[0][0].strip == "Друштво са ограниченом одговорношћу"	
-        skinidoo(x)
-     end
-     
-     if x_pravnaforma[0][0].strip == "Акционарско друштво"	
-        skinidoo(x)
-     end
-     if x_pravnaforma[0][0].strip == "Јавно предузеће"	
-        skinidoo(x)
-     end
-     if x_pravnaforma[0][0].strip == "Командитно друштво"	
-        skinidoo(x)
-     end
-     if x_pravnaforma[0][0].strip == "Отворено акционарско друштво"	
-        skinidoo(x)
-     end
-     if x_pravnaforma[0][0].strip == "Задруга"	
-        skinidoo(x)
-     end
-     if x_pravnaforma[0][0].strip == "Друштвено предузеће"	
-        skinidoo(x)
-     end
-     if x_pravnaforma[0][0].strip == "Ортачко друштво"	
-        skinidoo(x)
-     end
-     if x_pravnaforma[0][0].strip == "Друго"	
-        skinidoo(x)
-     end
-     #if x_pravnaforma[0][0].strip == "Удружење"	
-        # ne mogu ovde da preskocima, jer udruzenja nemaju na istom blobu pravnu formu
-     #end
-    
+    pocetni_array.each do |x|
+         params[:company] = {}   	
+         x_pravnaforma = x[2].scan(/Правна форма:(.*?)Седиште: Општина:/)
+         
+         if x_pravnaforma.empty?
+            next #ovime sam resio udruzenje, jer ono x_pravnaforma vraca nil - iako je greska nil - ali samo za prvog clana araaya, nego prazan array
+         end
+         if x_pravnaforma[0][0].strip == "Друштво са ограниченом одговорношћу"	
+            skinidoo(x)
+         end
+         if x_pravnaforma[0][0].strip == "Акционарско друштво"	
+            skinidoo(x)
+         end
+         if x_pravnaforma[0][0].strip == "Јавно предузеће"	
+            skinidoo(x)
+         end
+         if x_pravnaforma[0][0].strip == "Командитно друштво"	
+            skinidoo(x)
+         end
+         if x_pravnaforma[0][0].strip == "Отворено акционарско друштво"	
+            skinidoo(x)
+         end
+         if x_pravnaforma[0][0].strip == "Задруга"	
+            skinidoo(x)
+         end
+         if x_pravnaforma[0][0].strip == "Друштвено предузеће"	
+            skinidoo(x)
+         end
+         if x_pravnaforma[0][0].strip == "Ортачко друштво"	
+            skinidoo(x)
+         end
+         if x_pravnaforma[0][0].strip == "Друго"	
+            skinidoo(x)
+         end
     end
     
     check_file_passed(params[:fajl])
@@ -59,8 +53,8 @@ class UploadsController < ApplicationController
   
   def create
     begin
-    # this is not a perfect check
-    if params[:database].content_type != "application/octet-stream"
+    
+    if params[:database].content_type != "application/vnd.ms-excel"
        redirect_to '/'
        flash[:error] = "File not uploaded!"
        return
@@ -74,7 +68,8 @@ class UploadsController < ApplicationController
     flash[:successs] = "File uploaded"
     redirect_to :back
     
-    rescue
+    rescue Exception => e  
+        puts e.message 
         flash[:error] = "Some file must be selected in order to be uploaded!"
         redirect_to :back
     end
@@ -83,11 +78,7 @@ class UploadsController < ApplicationController
   private
 
   def check_file_passed(fajl)
-      #name = fajl.original_filename +"#{Time.now} - "
-      #directory = "public"
-      #path = File.join(directory, name)
-      #File.open(path, "wb") { |f| f.write(fajl.read) }
-      File.rename("#{fajl}", "#{fajl} - prosao.db")
+      File.rename("#{fajl}", "#{fajl} - prosao.csv")
   end
   
   def company_params

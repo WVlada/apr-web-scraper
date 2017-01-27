@@ -46,7 +46,8 @@ en:
        -  Again data had to be reorganized to match criteria of network visualization software.
        -  Cytoscape is used for complete network images.
        -  Cytoscape.js is used in-app for graphic representation of single searched entities and their connected entities.
-       -  Out of 111k companies, only around 30% are used for onepic-graph of economy, because of memory and cpu limits.  
+       -  Out of 111k companies, only around 30% are used for onepic-graph of economy, because of memory and cpu limits.
+       -  Since this app is hosted on Heroku, database can only hold 10k rows (companies). Full search is available at - www.apr-wvlada.c9users.io
     carrousel_title_1: "Database search of legal entities"
     carrousel_text_1: "Search of legal entities, by name, by owner, members of management, ceo`s...  "
     carrousel_link_1: "Search"
