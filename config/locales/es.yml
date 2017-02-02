@@ -43,7 +43,7 @@ es:
         - De nuevo los datos tuvieron que ser reorganizados para que coincidieran con los criterios del software de visualización de la red.
         - Cytoscape se utiliza para imágenes de red completas.
         - Cytoscape.js se utiliza en la aplicación para la representación gráfica de entidades buscadas únicas y sus entidades conectadas.
-        - Dado que esta aplicación está alojada en Heroku, la base de datos sólo puede contener 10k filas (empresas). La búsqueda completa está disponible en - www.apr-wvlada.c9users.io
+  
   AboutPage:
     title: "Acerca de la página Bienvenido"
     text: "Esto se trata de la página."
@@ -89,3 +89,4 @@ es:
   OnepicPage:
     title: "Economía en un cuadro."
     text:  "Haga clic en la imagen para ampliarla."
+    textp: "Cada punto es una empresa. Las líneas entre los puntos se hacen si dos empresas tienen la misma persona real o jurídica que una de las siguientes: propietario, miembro del consejo, ejecutivo o miembro del consejo de supervisión - algunos de los requisitos (pero no todos) para el interés conjunto de acuerdo con la ley. Forma de uva es una representación del sector estatal - que consiste en las empresas estatales, empresas de servicios públicos, las empresas en quiebra que se rige por la Agencia estatal, y las empresas que están conectadas a ellos."

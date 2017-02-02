@@ -47,8 +47,12 @@ class StaticController < ApplicationController
    
   end
   
-  def one_pic
+  def one_pic_gallery
    
   end
   
+  def onepic
+  
+  end
+
 end

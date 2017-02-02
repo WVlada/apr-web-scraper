@@ -47,7 +47,7 @@ en:
        -  Cytoscape is used for complete network images.
        -  Cytoscape.js is used in-app for graphic representation of single searched entities and their connected entities.
        -  Out of 111k companies, only around 30% are used for onepic-graph of economy, because of memory and cpu limits.
-       -  Since this app is hosted on Heroku, database can only hold 10k rows (companies). Full search is available at - www.apr-wvlada.c9users.io
+    
     carrousel_title_1: "Database search of legal entities"
     carrousel_text_1: "Search of legal entities, by name, by owner, members of management, ceo`s...  "
     carrousel_link_1: "Search"
@@ -127,4 +127,5 @@ en:
     
   OnepicPage:
     title: "Economy in a picture."
-    text:  "Click on image to view full size."
+    text:  "Click on image to view full size"
+    textp: "Every dot is one company. Lines between dots are made if 2 companies have same real or legal person as one of the following: owner, member of board, executive or member of supervisory board - some of requirements (but not all) for joint interest according to the Law. Grape-like form is a representation of state sector - it consists of state owned companies, utility companies, companies in bankruptcy that governed by state Agency, and companies that are connected to them."

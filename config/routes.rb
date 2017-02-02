@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   match '/contact',  to: 'static#contact',  via: 'get'
   match '/info',  to: 'static#info',  via: 'get'
   match '/user_graphs',  to: 'static#user_graphs',  via: 'get'
-  match '/one_pic',  to: 'static#one_pic',  via: 'get'
+  match '/one_pic_gallery',  to: 'static#one_pic_gallery',  via: 'get'
   
   match 'en',     to: 'static#english',  via: 'get'
   match 'sr',     to: 'static#srpski',  via: 'get'
@@ -51,6 +51,8 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  
+  get '/onepic(/:id)' => 'static#onepic'
  
 #end
   # Example of regular route:
