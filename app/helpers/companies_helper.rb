@@ -38,7 +38,7 @@ require "csv"
                     upr = Company.where("upravni_odbor LIKE ?", "%#{nameANDjmbg[1]}%")
                     cla = Company.where("clanovi LIKE ?", "%#{nameANDjmbg[1]}%")
                     ######## u ovom slucaju MB
-                    ime = Company.where("cast(\"MB\" as text) LIKE ?", "%#{nameANDjmbg[1]}%")
+                    ime = Company.where("cast(\'MB\' as text) LIKE ?", "%#{nameANDjmbg[1]}%")
                     # SET se kao i HASH ne moze modifikovati u iteraciji
                     # my_array.push(item1) unless my_array.include?(item1) 
                             zas.each do |x|
