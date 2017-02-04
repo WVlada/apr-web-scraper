@@ -63,7 +63,11 @@
                         <% if logged_in? %>    
                             <div class="jmbg"> <%= value.to_s  %><br></div> 
                         <% else %>
-                            <div class="jmbg"> <% m = value.clone %><% m.to_s[7..12] = "xxxxxx" %> <%= m.to_s %><br></div>
+                            <% begin %>
+                                <div class="jmbg"> <% m = value.clone %><% m.to_s[7..12] = "xxxxxx" %> <%= m.to_s %><br></div>
+                            <% rescue %>
+                                <div class="jmbg"> <%= "n/a"  %><br></div>
+                            <% end %>
                         <% end %>
                     </div>
                     <% end %>
@@ -81,7 +85,11 @@
                         <% if logged_in? %>    
                             <div class="jmbg"> <%= value.to_s  %><br></div> 
                         <% else %>
-                            <div class="jmbg"> <% m = value.clone %><% m.to_s[7..12] = "xxxxxx" %> <%= m.to_s %><br></div>
+                            <% begin %>
+                                <div class="jmbg"> <% m = value.clone %><% m.to_s[7..12] = "xxxxxx" %> <%= m.to_s %><br></div>
+                            <% rescue %>
+                                <div class="jmbg"> <%= "n/a"  %><br></div>
+                            <% end %>
                         <% end %> 
                     </div> 
                     <% end %>
@@ -99,7 +107,11 @@
                         <% if logged_in? %>    
                             <div class="jmbg"> <%= value.to_s  %><br></div> 
                         <% else %>
-                            <div class="jmbg"> <% m = value.clone %><% m.to_s[7..12] = "xxxxxx" %> <%= m.to_s %><br></div>
+                            <% begin %>
+                                <div class="jmbg"> <% m = value.clone %><% m.to_s[7..12] = "xxxxxx" %> <%= m.to_s %><br></div>
+                            <% rescue %>
+                                <div class="jmbg"> <%= "n/a"  %><br></div>
+                            <% end %>
                         <% end %>
                     </div>
                     <% end %>
@@ -117,7 +129,11 @@
                         <% if logged_in? %>    
                             <div class="jmbg"> <%= value.to_s  %><br></div> 
                         <% else %>
-                            <div class="jmbg"> <% m = value.clone %><% m.to_s[7..12] = "xxxxxx" %> <%= m.to_s %><br></div>
+                            <% begin %>
+                                <div class="jmbg"> <% m = value.clone %><% m.to_s[7..12] = "xxxxxx" %> <%= m.to_s %><br></div>
+                            <% rescue %>
+                                <div class="jmbg"> <%= "n/a"  %><br></div>
+                            <% end %>
                         <% end %>
                     </div> 
                     <% end %>
@@ -135,7 +151,11 @@
                         <% if logged_in? %>    
                             <div class="jmbg"> <%= value.to_s  %><br></div> 
                         <% else %>
-                            <div class="jmbg"> <% m = value.clone %><% m.to_s[7..12] = "xxxxxx" %> <%= m.to_s %><br></div>
+                            <% begin %>
+                                <div class="jmbg"> <% m = value.clone %><% m.to_s[7..12] = "xxxxxx" %> <%= m.to_s %><br></div>
+                            <% rescue %>
+                                <div class="jmbg"> <%= "n/a"  %><br></div>
+                            <% end %>
                         <% end %>
                     </div>
                     <% end %>
