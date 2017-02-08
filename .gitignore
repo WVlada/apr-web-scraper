@@ -12,6 +12,8 @@
 /public/*.db
 /public/*.sqlite3
 /public/*.sqlite3-journal
+/config/environment_variables.yml 
+# da ignorujemo sifre i slicno - komentar nesme biti u istom redu inace ne radi!!!!!!!
 
 # top level : git rev-parse --show-toplevel
 # brisanje fajla iz svih commita: git filter-branch --tree-filter 'rm -f csvdesktop.sqlite3' HEAD

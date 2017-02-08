@@ -30,7 +30,10 @@ class SessionsController < ApplicationController
     # ok postoji vec
     else
     # napravi admina
-      x =  User.create(name: "vladimir",password: "vladimir", email: "vlada@gmail.com", admin: 1)
+      x =  User.create(name: ENV["ADMIN_USERNAME"], 
+                       password: ENV["ADMIN_PASSWORD"],
+                       email: ENV["ADMIN_EMAIL"],
+                       admin: 1)
       x.save!
     end
   end
