@@ -32,6 +32,6 @@ production:
   <<: *default
   database: db/production_pg
   template: template0
-  #username: postgres
-  #password:
+  username: postgres
+  password: postgres
   #host: localhost

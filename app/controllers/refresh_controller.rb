@@ -3,11 +3,11 @@ class RefreshController < ApplicationController
   
 def index
     precisti
-    izbaci_na
-    populate_info_base_company_types
-    populate_info_base_sectors
-    populate_info_base_people
-    populate_oblasti
+    #izbaci_na
+    #populate_info_base_company_types
+    #populate_info_base_sectors
+    #populate_info_base_people
+    #populate_oblasti
     
     izbrisi_po_izboru
     
