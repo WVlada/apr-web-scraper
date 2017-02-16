@@ -32,7 +32,7 @@
                                     4. <%= t "HomePage.manual1text4" %></p>
              </div>
              <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <%= link_to image_tag("joint.png", class: "img-responsive onepic"), "/companies/search" %> </div>
+                    <%= link_to image_tag("joint.png", class: "img-responsive onepic"), "/companies/search?locale=#{I18n.locale}" %> </div>
              </div>
           </div>
     </div>
@@ -48,7 +48,7 @@
                     <p class="lead"><%= t "HomePage.manual2text" %></p>
             </div>
             <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                    <%= link_to image_tag("8thumb.png", class: "img-responsive onepic"), "/user_graphs" %> </div>
+                    <%= link_to image_tag("8thumb.png", class: "img-responsive onepic"), "/user_graphs?locale=#{I18n.locale}" %> </div>
             </div>
         </div>
      </div> 
@@ -64,7 +64,7 @@
                     <p class="lead"><%= t "HomePage.manual3text" %></p>
             </div>
             <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                <%= link_to image_tag("7thumb.png", class: "img-responsive onepic"), "/one_pic_gallery"%> </div>
+                <%= link_to image_tag("7thumb.png", class: "img-responsive onepic"), "/one_pic_gallery?locale=#{I18n.locale}"%> </div>
             </div>
         </div>
     </div>
