@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 20161222080718) do
     t.text     "nadzorni_odbor"
     t.text     "upravni_odbor"
     t.text     "clanovi"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "oblast"
   end
 
@@ -54,15 +54,15 @@ ActiveRecord::Schema.define(version: 20161222080718) do
   create_table "oblasts", force: :cascade do |t|
     t.string   "name"
     t.integer  "broj"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "people", force: :cascade do |t|
     t.string   "ime_i_prezime"
     t.string   "jmbg"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "broj_pojavljivanja_kao_clan"
     t.integer  "broj_pojavljivanja_kao_zastupnik"
     t.integer  "broj_pojavljivanja_kao_ostali_zastupnik"
@@ -75,16 +75,16 @@ ActiveRecord::Schema.define(version: 20161222080718) do
     t.string   "idnumber"
     t.string   "naziv"
     t.string   "number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "sum"
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "password_digest"
     t.integer  "admin"
   end
