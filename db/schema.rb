@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20161222080718) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.string   "oblast"
+    t.integer  "id"
   end
 
   add_index "companies", ["MB"], name: "index_companies_on_MB", unique: true, using: :btree
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(version: 20161222080718) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "number"
+    t.integer  "id"
   end
 
   add_index "company_types", ["skraceno"], name: "index_company_types_on_skraceno", unique: true, using: :btree
@@ -56,6 +58,7 @@ ActiveRecord::Schema.define(version: 20161222080718) do
     t.integer  "broj"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "id"
   end
 
   create_table "people", force: :cascade do |t|
@@ -69,6 +72,7 @@ ActiveRecord::Schema.define(version: 20161222080718) do
     t.integer  "broj_pojavljivanja_kao_upravni"
     t.integer  "broj_pojavljivanja_kao_nadzorni"
     t.integer  "ukupno"
+    t.integer  "id"
   end
 
   create_table "sectors", force: :cascade do |t|
@@ -78,6 +82,7 @@ ActiveRecord::Schema.define(version: 20161222080718) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "sum"
+    t.integer  "id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -87,6 +92,7 @@ ActiveRecord::Schema.define(version: 20161222080718) do
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
     t.integer  "admin"
+    t.integer  "id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
