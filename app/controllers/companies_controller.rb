@@ -56,12 +56,12 @@ include CompaniesHelper
           
         when "ime_firme"
           @companies = Company.where("poslovno_ime LIKE ?", "%#{params[:x]}%")
-        when "MB"
+        when "mb"
           x = Company.find_by(params[:search_param] => params[:x])
           unless x == nil
             @companies << x
           end
-        when "PIB"
+        when "pib"
           y = Company.find_by(params[:search_param] => params[:x])
           unless y == nil
             @companies << y
