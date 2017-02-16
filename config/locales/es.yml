@@ -22,6 +22,9 @@
 es:
   HomePage:
     welcome1: "Bienvenido"
+    welcome2: "webscrAPR"
+    subtitle1: "A project that tries to"
+    subtitle2: "picturise serbian economy."
     title: "Página de inicio"
     texttitle: <b>Cómo se hizo</b>
     text: |
@@ -43,6 +46,38 @@ es:
         - De nuevo los datos tuvieron que ser reorganizados para que coincidieran con los criterios del software de visualización de la red.
         - Cytoscape se utiliza para imágenes de red completas.
         - Cytoscape.js se utiliza en la aplicación para la representación gráfica de entidades buscadas únicas y sus entidades conectadas.
+    
+    carrousel_title_1: "Database search of legal entities"
+    carrousel_text_1: "Search of legal entities, by name, by owner, members of management, ceo`s...  "
+    carrousel_link_1: "Search"
+    carrousel_mali_naslov_1: "Search"
+    carrousel_mali_text_1: "Basic search of legal entities"
+    
+    carrousel_title_2: "User generated graphs"
+    carrousel_text_2: "Custom graphs will enable user to chose criteria of grouping nodes in network. For example, chosing only Belgrade born enterpreneurs in wholesale trade."
+    carrousel_link_2: "Graphs"
+    carrousel_mali_naslov_2: "Graph building"
+    carrousel_mali_text_2: "Custom-made graphs"
+    
+    carrousel_title_3: "Presenting the whole economy in one picture"
+    carrousel_text_3: "Trying to present whole economy of Serbia in one picture... Made on 10% sample size, hitting the limits of graph software and desktop computer.  "
+    carrousel_link_3: "All in 1"
+    carrousel_mali_naslov_3: "Serbian economy"
+    carrousel_mali_text_3: "In one picture"
+    
+    manual1Title: "Searching and joint interest"
+    manual1text1: "Search criteria must be selected."
+    manual1text2: "Follow instructions beneath form."
+    manual1text3: "After clicking results are displayed."
+    manual1text4: "Results can be further filtered."
+    
+    manual2Title: "Custom graph builder"
+    manual2text: "Create a custom graph, on city, name, bussines area etc..."
+    
+    manual3Title: "Whole economy in one picture"
+    manual3text: "Get a top view on how Serbian economy works, and how it is grouped/scattered."
+   
+    connect: "Connect to developer:"
   
   AboutPage:
     title: "Acerca de la página Bienvenido"
