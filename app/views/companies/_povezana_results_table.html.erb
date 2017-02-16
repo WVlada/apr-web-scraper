@@ -31,8 +31,8 @@
                     <tr>
                         <td><%= i+1 %></td>
                         <%# Turbolinks FIX %>
-                        <td><%= link_to x.MB.to_s, company_path(x.id), data: { no_turbolink: true } %></td>
-                        <td><%= x.PIB %></td>
+                        <td><%= link_to x.mb.to_s, company_path(x.id), data: { no_turbolink: true } %></td>
+                        <td><%= x.pib %></td>
                         <td><%= x.poslovno_ime %></td>
                     <tr>
                    <% end %>

@@ -1,7 +1,7 @@
 #x = Company.where("clanovi LIKE ?", "%Тип: Ак%")
 
 x = Company.where("clanovi LIKE ?", "%Тип: Ак%").take(5)
-x = Company.where(MB: 7451512)
+x = Company.where(mb: 7451512)
 
 
 def ccc(array)

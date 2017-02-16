@@ -7,7 +7,7 @@
 # database schema. If you need to create the application database on another
 # system, you should be using db:schema:load, not running all the migrations
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and tputs Company.where("clanovi LIKE ?", "%greska1%").counthe greater likelihood for issues).
+# you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
 
@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20161222080718) do
   enable_extension "plpgsql"
 
   create_table "companies", force: :cascade do |t|
-    t.integer  "MB"
+    t.integer  "mb"
     t.string   "poslovno_ime"
     t.string   "status"
     t.string   "pravna_forma"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20161222080718) do
     t.string   "mesto"
     t.string   "ulica_i_broj"
     t.string   "datum_osnivanja"
-    t.integer  "PIB"
+    t.integer  "pib"
     t.integer  "sifra_delatnosti"
     t.string   "naziv_delatnosti"
     t.text     "zastupnici"
@@ -33,12 +33,12 @@ ActiveRecord::Schema.define(version: 20161222080718) do
     t.text     "nadzorni_odbor"
     t.text     "upravni_odbor"
     t.text     "clanovi"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.string   "oblast"
   end
 
-  add_index "companies", ["MB"], name: "index_companies_on_MB", unique: true, using: :btree
+  add_index "companies", ["mb"], name: "index_companies_on_mb", unique: true, using: :btree
 
   create_table "company_types", force: :cascade do |t|
     t.integer  "idnumber"
@@ -54,15 +54,15 @@ ActiveRecord::Schema.define(version: 20161222080718) do
   create_table "oblasts", force: :cascade do |t|
     t.string   "name"
     t.integer  "broj"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "people", force: :cascade do |t|
     t.string   "ime_i_prezime"
     t.string   "jmbg"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.integer  "broj_pojavljivanja_kao_clan"
     t.integer  "broj_pojavljivanja_kao_zastupnik"
     t.integer  "broj_pojavljivanja_kao_ostali_zastupnik"
@@ -75,16 +75,16 @@ ActiveRecord::Schema.define(version: 20161222080718) do
     t.string   "idnumber"
     t.string   "naziv"
     t.string   "number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer  "sum"
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "password_digest"
     t.integer  "admin"
   end

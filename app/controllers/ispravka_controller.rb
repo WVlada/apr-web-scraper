@@ -16,7 +16,7 @@ class IspravkaController < ApplicationController
   def get_persons(mb)
     
     arejprve = Set.new
-    prva = Company.find_by(:MB => mb)
+    prva = Company.find_by(:mb => mb)
     
     unless prva.zastupnici.length == 0
       prva.zastupnici.each do |y|
@@ -71,7 +71,7 @@ class IspravkaController < ApplicationController
   
   def obelezi_sa_greskom
   
-      sve = Company.pluck(:MB)
+      sve = Company.pluck(:mb)
       brojac = 0
       
       sve.each do |firmaMB|
@@ -79,7 +79,7 @@ class IspravkaController < ApplicationController
                 begin 
                   jmbgHashZ = get_persons(firmaMB)
                 rescue
-                  a = Company.find_by(MB: firmaMB)
+                  a = Company.find_by(mb: firmaMB)
                   a.update(clanovi: ["greska1", "greska1jmbg"], zastupnici: ["greska1", "greska1jmbg"], ostali_zastupnici: ["greska1", "greska1jmbg"], upravni_odbor: ["greska1", "greska1jmbg"], nadzorni_odbor: ["greska1", "greska1jmbg"])
                   puts brojac
                   brojac += 1

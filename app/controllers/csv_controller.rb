@@ -4,7 +4,7 @@ class CsvController < ApplicationController
   
   def index
       
-      sve = Company.pluck(:MB)
+      sve = Company.pluck(:mb)
       brojac = 0
       
       #File.delete("./public/file.csv") if File.exist?("./public/file.csv")
@@ -37,10 +37,10 @@ class CsvController < ApplicationController
                                           povezanost_preko = ""# ovaj se resetuje za svakog Persona              
                                           # moram nekako izbaciti broj pasosa, ostali imaju smisla zbog drzavnog sektora
                                           if nameANDjmbg[1] =~ /\A\d+\Z/
-                                            broj = Company.where('zastupnici LIKE :search OR ostali_zastupnici LIKE :search OR nadzorni_odbor LIKE :search OR upravni_odbor LIKE :search OR clanovi LIKE :search OR MB LIKE :search', search: "%#{nameANDjmbg[1]}%")
+                                            broj = Company.where('zastupnici LIKE :search OR ostali_zastupnici LIKE :search OR nadzorni_odbor LIKE :search OR upravni_odbor LIKE :search OR clanovi LIKE :search OR mb LIKE :search', search: "%#{nameANDjmbg[1]}%")
                                           else
                                             # neka bude za pocetak bez stranaca
-                                            broj = Company.where('zastupnici LIKE :search OR ostali_zastupnici LIKE :search OR nadzorni_odbor LIKE :search OR upravni_odbor LIKE :search OR clanovi LIKE :search OR MB LIKE :search', search: "%#{nameANDjmbg[0]}%") unless nameANDjmbg[0] == "Странац - Број пасоша"
+                                            broj = Company.where('zastupnici LIKE :search OR ostali_zastupnici LIKE :search OR nadzorni_odbor LIKE :search OR upravni_odbor LIKE :search OR clanovi LIKE :search OR mb LIKE :search', search: "%#{nameANDjmbg[0]}%") unless nameANDjmbg[0] == "Странац - Број пасоша"
                                           end
                                           
                                           povezanost_preko = nameANDjmbg[0]  
@@ -48,7 +48,7 @@ class CsvController < ApplicationController
                                                 # mora unless inace dodaje duplikate za svakog Persona
                                                 # ali moram da unosim selfloop, jer ne bi bilo singl-nodova
                                                 # a unless prviMB iskljucuje cak i self-loop
-                                                drugi.push([x.MB, povezanost_preko]) unless prviMB.include?(x.MB) 
+                                                drugi.push([x.mb, povezanost_preko]) unless prviMB.include?(x.mb) 
                                           end unless broj == nil
                               
                               end#
@@ -82,7 +82,7 @@ class CsvController < ApplicationController
       
     #arejprve = Set.new - ne sme biti set zbog ispravki koje sam uneo, da se imena ponavljaju
     arejprve = []
-    prva = Company.find_by(:MB => mb)
+    prva = Company.find_by(:mb => mb)
     
     unless prva.zastupnici.length == 0
       prva.zastupnici.each do |y|
@@ -132,7 +132,7 @@ class CsvController < ApplicationController
     
     # jer mi kolone nisu araj arajova, nego obican aray za svakog zastupnika
     jmbgHashZ = Hash[*arejprve]
-    jmbgHashZ[prva.poslovno_ime] = prva.MB.to_s
+    jmbgHashZ[prva.poslovno_ime] = prva.mb.to_s
     
     # Mora biti array, jer kroz Hash ne mogu da dodajem nove kljuceve u iteracijama, u araju moze
     return jmbgHashZ.to_a

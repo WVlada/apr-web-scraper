@@ -1,7 +1,7 @@
 class CreateCompanies < ActiveRecord::Migration
   def change
     create_table :companies do |t|
-      t.integer :MB
+      t.integer :mb
       t.string :poslovno_ime
       t.string :status
       t.string :pravna_forma
@@ -9,7 +9,7 @@ class CreateCompanies < ActiveRecord::Migration
       t.string :mesto
       t.string :ulica_i_broj
       t.string :datum_osnivanja
-      t.integer :PIB
+      t.integer :pib
       t.integer :sifra_delatnosti
       t.string :naziv_delatnosti
       t.text :zastupnici

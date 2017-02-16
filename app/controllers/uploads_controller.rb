@@ -82,7 +82,7 @@ class UploadsController < ApplicationController
   end
   
   def company_params
-      params.require(:company).permit(:MB, 
+      params.require(:company).permit(:mb, 
                                       :poslovno_ime,
                                       :status,
                                       :pravna_forma,
@@ -90,7 +90,7 @@ class UploadsController < ApplicationController
                                       :mesto,
                                       :ulica_i_broj,
                                       :datum_osnivanja,
-                                      :PIB,
+                                      :pib,
                                       :sifra_delatnosti,
                                       :naziv_delatnosti,
                                       :zastupnici => [],
@@ -116,13 +116,13 @@ class UploadsController < ApplicationController
               	params[:company][:poslovno_ime] = x_poslovnoime[0][0].strip
               	#params[:company][:skraceno_ime] = x_skracenoime[0][0].strip
               	params[:company][:status] = x_status[0][0].strip
-              	params[:company][:MB] = x_mb[0][0].strip.to_i
+              	params[:company][:mb] = x_mb[0][0].strip.to_i
               	params[:company][:pravna_forma] = x_pravnaforma[0][0].strip
               	params[:company][:opstina] = x_sediste[0][0].strip
               	params[:company][:mesto] = x_mesto[0][0].strip
               	params[:company][:ulica_i_broj] = x_ulica[0][0].strip
               	params[:company][:datum_osnivanja] = x_datum[0][0].strip
-              	params[:company][:PIB] = x_pib[0][0].strip.to_i
+              	params[:company][:pib] = x_pib[0][0].strip.to_i
              	   
                 ###############
                 x_sifradelatnosti = x[3].scan(/Шифра делатности:(.*?)Назив делатности:/)
@@ -170,7 +170,7 @@ class UploadsController < ApplicationController
               		#else
               		#    x_clanovi << [y[0].strip,y[1].strip]
               		#end
-              		# sa ovim sam izbacio DAFINU MILANOVIC sa MB 6004431 jer ona nema JMBG
+              		# sa ovim sam izbacio DAFINU MILANOVIC sa  MB 6004431 jer ona nema JG
               		if (y[0] != nil && y[0] != "") && (y[1] != nil && y[1] != "") 
               		    x_clanovi << [y[0].strip,y[1].strip]
               		end

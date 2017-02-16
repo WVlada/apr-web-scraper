@@ -326,12 +326,12 @@ def izbrisi_po_izboru
       x << Company.where("clanovi LIKE ?", "%#{jmbg_za_brisanje}%")
       x << Company.where("zastupnici LIKE ?", "%#{jmbg_za_brisanje}%")
       
-      #a = Company.find_by(MB: firmaMB)
+      #a = Company.find_by(mb: firmaMB)
       #a.update(clanovi: ["greska1", "greska1jmbg"], zastupnici: ["greska1", "greska1jmbg"], ostali_zastupnici: ["greska1", "greska1jmbg"], upravni_odbor: ["greska1", "greska1jmbg"], nadzorni_odbor: ["greska1", "greska1jmbg"])
       mbovi = []
       x.each do |y|
         y.each do |z|
-          mbovi << z.MB
+          mbovi << z.mb
         end
       end
       mbovi.each do |m|

@@ -18,7 +18,7 @@ include CompaniesHelper
     gon.povezani = []
     x = pretraga_povezanih(@company)
     x.each do |y|
-      gon.povezani << y.MB
+      gon.povezani << y.mb
     end
     gon.kombinacije = gon.povezani.combination(2)
   
@@ -88,7 +88,7 @@ include CompaniesHelper
   private
 
 #    def company_params
-#      params.require(:company).permit(:MB) 
+#      params.require(:company).permit(:mb) 
                                       #:poslovno_ime,
                                       #:status,
                                       #:pravna_forma,

@@ -23,7 +23,7 @@
                         <% @companies.each_with_index do |x,i| %>
                         <tr>
                             <td><%= i %></td>
-                            <td><%= link_to x.MB, x, data: { no_turbolink: true } %></td>
+                            <td><%= link_to x.mb, x, data: { no_turbolink: true } %></td>
                             <td><%= x.zastupnici[0] %><%=", jmbg: "%> <%= x.zastupnici[1] %></td>
                             <td><%= x.naziv_delatnosti %></td>
                             <td><%= precisti_ime(x.poslovno_ime) %></td>
@@ -34,7 +34,7 @@
                         <tr>
                             <td><%= i %></td>
                             <%# Turbolinks FIX %>
-                            <td><%= link_to x.MB, x, data: { no_turbolink: true } %></td>
+                            <td><%= link_to x.mb, x, data: { no_turbolink: true } %></td>
                             <% unless x.zastupnici[1].nil? || x.zastupnici[1].length < 8%>
                                 <td><%= x.zastupnici[0] %> <% m = x.zastupnici[1].clone %> <% m.to_s[7..12] = "xxxxxx" %> <%= m.to_s %></td>
                             <% end %>

@@ -10,12 +10,12 @@ require "csv"
           
           rezultat = []
           lista.each do |svakipar|
-             if svakipar[0] == kompanija.MB.to_s
+             if svakipar[0] == kompanija.m.to_s
                 rezultat << svakipar[1]
              end
           end
        
-        return Company.where(MB: rezultat)
+        return Company.where(mb: rezultat)
   
   end
   
@@ -24,7 +24,7 @@ require "csv"
         prva = kompanija
         
         prvaMB = []
-        prvaMB << prva.MB
+        prvaMB << prva.mb
 
         prvaMB.each do |firma|
             jmbgHashZ = get_persons(firma)
@@ -38,26 +38,26 @@ require "csv"
                     upr = Company.where("upravni_odbor LIKE ?", "%#{nameANDjmbg[1]}%")
                     cla = Company.where("clanovi LIKE ?", "%#{nameANDjmbg[1]}%")
                     ######## u ovom slucaju MB
-                    ime = Company.where("cast(\'MB\' as text) LIKE ?", "%#{nameANDjmbg[1]}%")
+                    ime = Company.where("cast(\'mb\' as text) LIKE ?", "%#{nameANDjmbg[1]}%")
                     # SET se kao i HASH ne moze modifikovati u iteraciji
                     # my_array.push(item1) unless my_array.include?(item1) 
                             zas.each do |x|
-                                prvaMB.push(x.MB) unless prvaMB.include?(x.MB)
+                                prvaMB.push(x.mb) unless prvaMB.include?(x.mb)
                             end unless zas == nil
                             ost.each do |x|
-                                prvaMB.push(x.MB) unless prvaMB.include?(x.MB)
+                                prvaMB.push(x.mb) unless prvaMB.include?(x.mb)
                             end unless ost == nil
                             nad.each do |x|
-                                prvaMB.push(x.MB) unless prvaMB.include?(x.MB)
+                                prvaMB.push(x.mb) unless prvaMB.include?(x.mb)
                             end unless nad == nil
                             upr.each do |x|
-                                prvaMB.push(x.MB) unless prvaMB.include?(x.MB)
+                                prvaMB.push(x.mb) unless prvaMB.include?(x.mb)
                             end unless upr == nil
                             cla.each do |x|
-                                prvaMB.push(x.MB) unless prvaMB.include?(x.MB)
+                                prvaMB.push(x.mb) unless prvaMB.include?(x.mb)
                             end unless cla == nil
                             ime.each do |x|
-                                prvaMB.push(x.MB) unless prvaMB.include?(x.MB)
+                                prvaMB.push(x.mb) unless prvaMB.include?(x.mb)
                             end unless ime == nil
                     end
                     break
@@ -66,7 +66,7 @@ require "csv"
             # ovde cu da vratim sve kompanije kao relacije
             povezaneKompanije = []
             prvaMB.each do |x|
-            povezaneKompanije << Company.find_by(:MB => x)
+            povezaneKompanije << Company.find_by(:mb => x)
         end
         return povezaneKompanije
   end
@@ -75,7 +75,7 @@ require "csv"
       
     #arejprve = Set.new ovo nesme da bude Set, jer onda ne ulaze u array oni sto sam stavio da budu npr: DRUŠTVENO DRUŠTVENO
     arejprve = []
-    prva = Company.find_by(:MB => mb)
+    prva = Company.find_by(:mb => mb)
     
     unless prva.zastupnici.length == 0
       prva.zastupnici.each do |y|
@@ -125,7 +125,7 @@ require "csv"
     
     # jer mi kolone nisu araj arajova, nego obican aray za svakog zastupnika
     jmbgHashZ = Hash[*arejprve]
-    jmbgHashZ[prva.poslovno_ime] = prva.MB.to_s
+    jmbgHashZ[prva.poslovno_ime] = prva.mb.to_s
     
     # Mora biti array, jer kroz Hash ne mogu da dodajem nove kljuceve u iteracijama, u araju moze
     return jmbgHashZ.to_a

@@ -45,7 +45,7 @@ class UsersController < ApplicationController
                 mbovi = []
                 x.each do |y|
                     y.each do |z|
-                    mbovi << z.MB
+                    mbovi << z.mb
                     end
                 end
                 
