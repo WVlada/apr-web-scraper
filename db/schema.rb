@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20161222080718) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "companies", force: :cascade do |t|
+  create_table "companies", force: :cascade, :id => false do |t|
     t.integer  "MB"
     t.string   "poslovno_ime"
     t.string   "status"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20161222080718) do
 
   add_index "companies", ["MB"], name: "index_companies_on_MB", unique: true, using: :btree
 
-  create_table "company_types", force: :cascade do |t|
+  create_table "company_types", force: :cascade, :id => false do |t|
     t.integer  "idnumber"
     t.string   "name"
     t.string   "skraceno"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20161222080718) do
 
   add_index "company_types", ["skraceno"], name: "index_company_types_on_skraceno", unique: true, using: :btree
 
-  create_table "oblasts", force: :cascade do |t|
+  create_table "oblasts", force: :cascade, :id => false do |t|
     t.string   "name"
     t.integer  "broj"
     t.datetime "created_at", null: false
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20161222080718) do
     t.integer  "id"
   end
 
-  create_table "people", force: :cascade do |t|
+  create_table "people", force: :cascade, :id => false do |t|
     t.string   "ime_i_prezime"
     t.string   "jmbg"
     t.datetime "created_at",                              null: false
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20161222080718) do
     t.integer  "id"
   end
 
-  create_table "sectors", force: :cascade do |t|
+  create_table "sectors", force: :cascade, :id => false do |t|
     t.string   "idnumber"
     t.string   "naziv"
     t.string   "number"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20161222080718) do
     t.integer  "id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, :id => false do |t|
     t.string   "name"
     t.string   "email"
     t.datetime "created_at",      null: false
