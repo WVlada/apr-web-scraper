@@ -33,8 +33,7 @@ class SessionsController < ApplicationController
       x =  User.create(name: ENV["ADMIN_USERNAME"], 
                        password: ENV["ADMIN_PASSWORD"],
                        email: ENV["ADMIN_EMAIL"],
-                       admin: 1,
-                       id: 1)
+                       admin: 1)
       x.save!
     end
   end

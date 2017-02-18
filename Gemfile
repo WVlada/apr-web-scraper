@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-
+# heroku pg:psql
+# ALTER TABLE users ADD COLUMN id BIGSERIAL PRIMARY KEY; 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
