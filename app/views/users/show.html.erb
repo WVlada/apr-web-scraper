@@ -1,5 +1,6 @@
 <title><%= t "HomePage.title" %></title>
-<% if @user.admin?(@user.id) %>
+<% if current_user.admin?(current_user.id) && logged_in? %>
+
 
 <div class="container-fluid">
 <div class="row">   
@@ -71,6 +72,7 @@
              <input type="text" class="form-control" name="jmbg_param" placeholder="JMBG za brisanje..."> </input>   
              <%= button_to "Izbrisi", "/users/#{params[:id]}/izbrisijmbg"  %>   
              <%= params %>
+             <%= session[:user_id] %>
          </form>
          
      </div>
