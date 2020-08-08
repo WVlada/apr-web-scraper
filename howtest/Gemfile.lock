@@ -76,7 +76,7 @@ GEM
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
-    rake (11.1.2)
+    rake (13.0.1)
     repeater (0.0.1)
     rest-client (1.8.0)
       http-cookie (>= 1.0.2, < 2.0)
