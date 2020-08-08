@@ -7,7 +7,7 @@
 Visit https://aprscraper.herokuapp.com/
 
 
-How it`s made
+How it`s made:
 
 ## 1. NBS website.
    - Since the APR website cannot be scraped headlessly, first step was to scrape all possible tax identification numbers in Serbia on the National Bank of Serbia website.
