@@ -32,7 +32,7 @@ gem "font-awesome-rails"
 gem 'bcrypt'
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'bigdecimal'
 gem 'gon' # za passing data to cytoscape
 gem 'kaminari'
 
