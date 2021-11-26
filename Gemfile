@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # ALTER TABLE users ADD COLUMN id BIGSERIAL PRIMARY KEY; 
 ruby '2.7.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails'#, '6.0.0'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 gem 'pg' # za heroku
@@ -35,7 +35,7 @@ gem 'bcrypt'
 gem 'bigdecimal'
 gem 'gon' # za passing data to cytoscape
 gem 'kaminari'
-gem 'bundler', '1.17.1' 
+#gem 'bundler', '1.17.1' 
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
