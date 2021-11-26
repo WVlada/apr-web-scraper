@@ -1,4 +1,4 @@
-#x = Company.where("clanovi LIKE ?", "%Тип: Ак%")
+#x = Company.where("clanovi LIKE ?", "%Тип: Ак%") try
 
 x = Company.where("clanovi LIKE ?", "%Тип: Ак%").take(5)
 x = Company.where(mb: 7451512)
