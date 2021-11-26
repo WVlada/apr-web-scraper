@@ -35,7 +35,7 @@ gem 'bcrypt'
 gem 'bigdecimal'
 gem 'gon' # za passing data to cytoscape
 gem 'kaminari'
-
+gem 'bundler', '1.17.1' 
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
