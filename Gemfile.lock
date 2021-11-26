@@ -54,7 +54,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
-    concurrent-ruby (1.0.1)
+    concurrent-ruby (1.1.9)
     crass (1.0.6)
     debug_inspector (0.0.2)
     erubis (2.7.0)
@@ -91,13 +91,14 @@ GEM
     minitest (5.14.4)
     multi_json (1.11.2)
     nio4r (2.5.8)
-    nokogiri (1.6.7.2)
-      mini_portile2 (~> 2.0.0.rc2)
+    nokogiri (1.12.5)
+      mini_portile2 (~> 2.6.1)
+      racc (~> 1.4)
     pg (0.19.0)
     puma (4.3.9)
       nio4r (~> 2.0)
-    rack (1.6.4)
-
+    racc (1.6.0)
+    rack (1.6.13)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.5)
