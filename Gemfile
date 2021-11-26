@@ -29,6 +29,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem "font-awesome-rails"
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 gem 'bcrypt'
 # Use Unicorn as the app server
 # gem 'unicorn'
